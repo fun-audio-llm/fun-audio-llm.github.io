@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.88.1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href=""https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/normalize.css">
+
+	<title>FunAudioLLM</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+
+<body data-new-gr-c-s-check-loaded="14.1091.0" data-gr-ext-installed="">
+
+<div class="container" >
+<header role="banner">
+</header>
+<main role="main">
+<article itemscope itemtype="https://schema.org/BlogPosting">
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<div class="text-center">
+	<h2>FunAudioLLM: Voice Understanding and Generating Models for Natural Interaction Between Humans and LLMs</h2>
+
+      [<a href="https://arxiv.org/abs/2406.02430">Paper</a>]
+		[<a href="https://arxiv.org/abs/2406.02430">Code</a>]
+		[<a href="https://arxiv.org/abs/2406.02430">HuggingFace</a>]
+		[<a href="https://arxiv.org/abs/2406.02430">ModelScope</a>]
+		<!-- [<a href="https://arxiv.org/abs/2303.03926">Paper</a>] -->
+		<!-- [<a href="https://arxiv.org/abs/2306.02982">Paper</a>] -->
+
+        <p class="fst-italic mb-0">
+			<br>
+			Tongyi Speech Lab
+		<p></p>
+        </p>
+        <p><b>Alibaba Group</b></p>
+	</div>
+	<p><b>Abstract.</b>
+		We introduce FunAudioLLM, ....
+	</p>
+
+	<p>
+	<b>Contents</b>
+      <ul>
+        <li><a href="#CosyVoice-overview">Voice Generation Model: CosyVoice</a>
+			<ul>
+				<li><a href="#CosyVoice-overview">Overview</a></li>
+				<li><a href="#CosyVoice-basic">Multi-lingual Voice Generation</a></li>
+				<li><a href="#CosyVoice-instructed">Instructed Voice Generation</a></li>
+				<li><a href="#CosyVoice-zeroshot">Zero-shot In-context Generation</a></li>
+				<li><a href="#CosyVoice-sft">Speaker Fine-tune</a></li>
+			</ul>
+		</li>
+        <li><a href="#SenseVoice">Voice Understanding Model: SenseVoice</a>
+			<ul>
+				<li><a href="#SenseVoice-overview">Overview</a></li>
+				<li><a href="#SenseVoice-basic">Speech Content Recognition</a></li>
+				<li><a href="#SenseVoice-emotion">Emotion Recognition</a></li>
+				<li><a href="#SenseVoice-audioevent">Audio Events Recognition</a></li>
+			</ul>
+		</li>
+		<li><a href="#Applications">Applications</a>
+			<ul>
+				<li><a href="#App-S2ST">Speech-to-Speech Translation</a></li>
+				<li><a href="#App-VoiceChat">Emotional VoiceChat</a></li>
+			</ul>
+		</li>
+      </ul>
+	</p>
+
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">		
+	<h2 id="CosyVoice-overview" style="text-align: center;">Overview of CosyVoice</h2>
+	<body>
+	<p style="text-align: center;">
+		<img src="pics/overview-cosyvoice.png" height="400" width="1024">
+	</p>
+	</body>
+		<p style="text-align: center;" >
+			<b>Figure 1.</b> An overview of the CosyVoice Models.
+		</p>
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="CosyVoice-basic" style="text-align: center;">Multi-lingual Voice Generation</h2>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="vertical-align : middle;text-align: center">Language </th>
+				<th style="vertical-align : middle;text-align: center">Speaker </th>
+				<th style="vertical-align : middle;text-align: center">Utterance 1</th>
+				<th style="vertical-align : middle;text-align: center">Utterance 2</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;" rowspan="2">ZH</td>
+						<td style="vertical-align : middle;text-align:center;">Female</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Male</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;" rowspan="2">EN</td>
+						<td style="vertical-align : middle;text-align:center;">Female</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Male</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;" rowspan="2">JP</td>
+						<td style="vertical-align : middle;text-align:center;">Female</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Male</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;" rowspan="2">Yue</td>
+						<td style="vertical-align : middle;text-align:center;">Female</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Male</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;" rowspan="2">KO</td>
+						<td style="vertical-align : middle;text-align:center;">Female</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Male</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_1.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/sft_generation/ZH/generated/female_2.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="CosyVoice-instructed" style="text-align: center;">Instructed Voice Generation</h2>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="vertical-align : middle;text-align: center">Language </th>
+				<th style="vertical-align : middle;text-align: center">Instruction </th>
+				<th style="vertical-align : middle;text-align: center">Utterance 1</th>
+				<th style="vertical-align : middle;text-align: center">Utterance 2</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;" rowspan="4">ZH</td>
+						<td style="vertical-align : middle;text-align:center;">Happy</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/emotion_generation/ZH/generated/happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/EN/generated/happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Angery</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/EN/generated/angery.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/EN/generated/angery.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Fear</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/EN/generated/fear.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/EN/generated/fear.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Surprise</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/EN/generated/surprise.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/EN/generated/surprise.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;" rowspan="4">EN</td>
+						<td style="vertical-align : middle;text-align:center;">Happy</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/emotion_generation/ZH/generated/happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/ZH/generated/happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Angery</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/ZH/generated/angery.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/ZH/generated/happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Fear</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/ZH/generated/fear.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/ZH/generated/happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Surprise</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/ZH/generated/surprise.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instructed_generation/ZH/generated/happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="CosyVoice-zeroshot" style="text-align: center;">Zero-shot In-context Generation</h2>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center">Language </th>
+					<th style="vertical-align : middle;text-align: center">Prompt </th>
+					<th style="vertical-align : middle;text-align: center">Utterance 1</th>
+					<th style="vertical-align : middle;text-align: center">Utterance 2</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">ZH</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">EN</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">JP</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">Yue</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">KO</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="CosyVoice-sft" style="text-align: center;">Speaker Fine-tune</h2>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">Speaker </th>
+				<th style="text-align: center">Text </th>
+				<th style="text-align: center">Generated</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;" rowspan="3">Speaker1</td>
+					<td style="vertical-align : middle;text-align:center;">好呀，哈哈哈哈哈，喜欢笑的人运气都不会差哦，希望你每天笑口常开~</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/SpeakerFinetune_samples/speaker1/4781135337205789117.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					</tr>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;">哇！恭喜你中了大乐透，八百万可真不少呢！有什么特别的计划或想法吗？</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/SpeakerFinetune_samples/speaker1/-6681486522402923816.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					</tr>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;">哼，你这么问是想请本小姐吃饭吗？如果对象是你的话，那也不是不可以。</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/SpeakerFinetune_samples/speaker1/9135794595658757744.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					</tr>
+
+					<tr>
+					<td style="vertical-align : middle;text-align:center;" rowspan="3">Speaker2</td>
+					<td style="vertical-align : middle;text-align:center;">是呀，他还想换个地球仪哈哈哈，看来给你积累了一些快乐值了，你还想不想再听一个其他的笑话呀？</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/SpeakerFinetune_samples/speaker2/-1325430967143158944.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					</tr>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;">嘿嘿，你是不是也想拥有甜甜的恋爱呢？《微微一笑很倾城》是你的不二选择，男女主是校花校草类型，他们通过游戏结识，再到两人见面，全程没有一点误会，真的齁甜，想想都忍不住“姨妈笑”~</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/SpeakerFinetune_samples/speaker2/-438126037267614383.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					</tr>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;">小傻瓜，嗯……算是个很可爱很亲切的名字，有点“独特”哦，不过我有些好奇，你为什么会给我选这个昵称呢？</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/SpeakerFinetune_samples/speaker2/7449251907670299552.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<p>* Due to copyright restrictions, we are unable to open source the SFT models, but we will release the SFT training script. You can use this script to perform SFT on your own data.</p>
+	<br>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="App-S2ST" style="text-align: center;">Speech-to-Speech Translation</h2>
+	<p>By integrating LLMs and CosyVoice, we can easily perform speech-to-speech translation (S2ST).</p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center">Task </th>
+					<th style="vertical-align : middle;text-align: center">Original </th>
+					<th style="vertical-align : middle;text-align: center">Translated </th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">ZH2EN</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="App-VoiceChat" style="text-align: center;">Versatile Voice Chat</h2>
+	<p>By integrating SenseVoice, LLMs and CosyVoice, we can build a versatile VoiceChat application.</p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center">User </th>
+					<th style="vertical-align : middle;text-align: center">Assistant </th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+</div>
+
+</article>
+</main>
+</div>
+
+</body>
+</html>

@@ -77,8 +77,7 @@
 
 </div>
 
-
-<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">		
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="CosyVoice-overview" style="text-align: center;">Overview of CosyVoice</h2>
 	<body>
 	<p style="text-align: center;">
@@ -86,7 +85,12 @@
 	</p>
 	</body>
 		<p style="text-align: center;" >
-			<b>Figure 1.</b> An overview of the CosyVoice Models.
+			<b>Figure 1.</b> An overview of the CosyVoice Models at the inference stage.
+			In summary, CosyVoice consists of an autoregressive transformer to generate corresponding speech tokens
+			for input text, an ODE-based diffusion model, flow matching,
+			to reconstruct Mel spectram from the generated speech tokens,
+			and a HiFiGAN based vocoder to synthesize waveforms.
+			Dashed modules are optional in specific model usages, such as cross-lingual, SFT inference and so on.
 		</p>
 </div>
 
@@ -244,40 +248,31 @@
 				<tr>
 					<th style="vertical-align : middle;text-align: center">Language </th>
 					<th style="vertical-align : middle;text-align: center">Prompt </th>
-					<th style="vertical-align : middle;text-align: center">Utterance 1</th>
-					<th style="vertical-align : middle;text-align: center">Utterance 2</th>
+					<th style="vertical-align : middle;text-align: center">Generated 1</th>
+					<th style="vertical-align : middle;text-align: center">Generated 2</th>
 				</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td style="vertical-align : middle;text-align:center;">ZH</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+						<td style="vertical-align : middle;text-align:center;" rowspan="4">ZH</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/210054_happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>这也太可爱了吧，我好想要啊。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/210054_happy-utt0001_happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>得知自己荣升为部门经理，我欣喜若狂，仿佛整个世界都在为我的成功奏响欢快的交响曲。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/210054_happy-utt0002_happy.wav" autoplay/>Your browser does not support the audio element.</audio><br>收到好友从远方寄来的生日礼物，那份意外的惊喜与深深的祝福让我心中充满了甜蜜的快乐，笑容如花儿般绽放。</td>
 					</tr>
 					<tr>
-						<td style="vertical-align : middle;text-align:center;">EN</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/220006_angry.wav" autoplay/>Your browser does not support the audio element.</audio><br>你最好给我安静点。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/220006_angry-utt0007_angry.wav" autoplay/>Your browser does not support the audio element.</audio><br>面对同事无端的指责与诽谤，我胸中怒火熊熊燃烧，双拳紧握，恨不得立刻揭露其虚伪面目，捍卫自己的名誉。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/220006_angry-utt0008_angry.wav" autoplay/>Your browser does not support the audio element.</audio><br>目睹不法分子公然破坏公共设施，无视社会规则，我怒不可遏，心中充满了对这种恶劣行径的强烈谴责与愤慨。</td>
 					</tr>
 					<tr>
-						<td style="vertical-align : middle;text-align:center;">JP</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/230007_sad.wav" autoplay/>Your browser does not support the audio element.</audio><br>我的故事，过程很美，而结局却满是悲伤。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/230007_sad-utt0004_sad.wav" autoplay/>Your browser does not support the audio element.</audio><br>望着空荡荡的房间，昔日共度的美好时光历历在目，如今却物是人非，泪水止不住地滑落，心如刀割。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/230007_sad-utt0005_sad.wav" autoplay/>Your browser does not support the audio element.</audio><br>得知挚爱的宠物因病离世，我沉浸在无尽的哀伤中，那熟悉的身影、温顺的眼神仿佛还在眼前，令人心碎不已。</td>
 					</tr>
 					<tr>
-						<td style="vertical-align : middle;text-align:center;">Yue</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
-					</tr>
-					<tr>
-						<td style="vertical-align : middle;text-align:center;">KO</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN2ZH/generated/-7059551132412457673.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/260020_hate.wav" autoplay/>Your browser does not support the audio element.</audio><br>小狐狸自以为高人一等，处处表现出不可一世的模样，徒然惹人反感罢了。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/260020_hate-utt0013_hate.wav" autoplay/>Your browser does not support the audio element.</audio><br>看到餐盘中蠕动的蛆虫，我胃中翻江倒海，那种恶心的感觉瞬间席卷全身，对这种肮脏景象的厌恶之情无以言表。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/zh/260020_hate-utt0014_hate.wav" autoplay/>Your browser does not support the audio element.</audio><br>闻到邻居家中飘出的刺鼻烟味，我眉头紧皱，喉咙发痒，对这种严重干扰他人生活的不良习惯感到极度厌恶。</td>
 					</tr>
 				</tbody>
 			</table>

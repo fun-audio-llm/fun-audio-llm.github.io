@@ -465,13 +465,167 @@
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="SenseVoice-emotion" style="text-align: center;">Speech Emotion Recognition</h2>
-	<body>
-	<p style="text-align: center;">
-		<img src="pics/SenseVoice-emotion.png" height="500" width="800">
-	</p>
-	</body>
+		<p> SenseVoice can also be used for discrete emotion recognition. Happy, Sad, Angry and Neutral are supported. 
+			We evaluate it on 7 popular emotion recognition dataset. 
+			The SenseVoice-Large can approaching or exceeding the SOTA results on most datasets even without target corpus finetuning.
+		</p>
+		<body>
+			<p style="text-align: center;">
+				<img src="pics/ser_result.webp">
+			</p>
+		</body>
 		<p style="text-align: center;" >
-			<b>Figure 4.</b> Comparasion of SenseVoice and Whisper on multilingual speech recognition beachmarks.
+			<b>Figure X.</b> Weighted Average Accuracy (WA(%)) comparison on 7 emotion recognition datasets. 
+			<a href="https://github.com/emo-box/EmoBox" target="_blank">EmoBox</a> is a recent speech emotion recognition benchmark based on Self-Supervised Models and Whisper.
+			<a href="https://huggingface.co/ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition" target="_blank">Model on HF</a> stands for the most popular speech emotion recognition model on HuggingFace.
+		</p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">Audio </th>
+				<th style="text-align: center">SenseVoice-Large </th>
+				<th style="text-align: center">SenseVoice-Small</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/zh_happy.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|zh|>英国的哲学家曾经说过。<|HAPPY|></td>
+					<td style="vertical-align : middle;text-align:center;"><|zh|><|HAPPY|><|Speech|>英国的哲学家曾经说过。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/zh_sad.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|>英国的哲学家曾经说过。<|SAD|></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|><|SAD|><|Speech|>英国的哲学家曾经说过。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/zh_angry.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|>英国的哲学家曾经说过。<|ANGRY|></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|><|ANGRY|><|Speech|>英国的哲学家曾经说过。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/zh_neutral.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|>英国的哲学家曾经说过。<|NEUTRAL|></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|><|NEUTRAL|><|Speech|>英国的哲学家曾经说过。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/en_happy.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|>I did go, and made many prisoners. <|HAPPY|></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|HAPPY|><|Speech|>I did go and made many prisoners.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/en_sad.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|>I did go, and made many prisoners. <|SAD|></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|SAD|><|Speech|>I did go and made many prisoners.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/en_angry.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|>I did go, and made many prisoners. <|ANGRY|></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|ANGRY|><|Speech|>I did go and made many prisoners.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/en_neutral.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|>I did go, and made many prisoners. <|NEUTRAL|></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|NEUTRAL|><|Speech|>I did go and made many prisoners.</td>
+					</tr>
+	
+				</tbody>
+			</table>
+		</div>
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="SenseVoice-AED" style="text-align: center;">Audio Events Classification</h2>
+	<p> Both SenseVoice-Small and SenseVoice-Large model can detect the audio event in the speech, including music, applause, laughter. 
+		And the SenseVoice-Small can detect more events, such as coughing, sneezing, breathing and crying which could occur during human-machine interaction.
+	</p>
+	<p> Although the SenseVoice are trained on speech data, it can still classify the recording with only audio event.
+		We compare the SenseVoice with the audio event detection models <a href="https://github.com/microsoft/unilm/tree/master/beats" target="_blank">BEATS</a> 
+		and <a href="https://github.com/qiuqiangkong/audioset_tagging_cnn" target="_blank">PANNs</a> on 
+		environment sound classification, baby cry/laugh detection, coughing detection and talkshow event detection.
+	</p>
+	<div class="table-responsive pt-3">
+		<table class="table table-hover pt-2">
+			<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center"> <a href="https://github.com/karolpiczak/ESC-50" target="_blank">ESC-50</a> </th>
+					<th style="vertical-align : middle;text-align: center"> <a href="https://github.com/giulbia/baby_cry_detection/tree/master" target="_blank">Baby Cry Detection</a></th>
+					<th style="vertical-align : middle;text-align: center"> <a href="https://github.com/iiscleap/Coswara-Data/tree/master" target="_blank">Coswara</a></th>
+					<th style="vertical-align : middle;text-align: center">Inhome Talkshow </th>
+				</tr>
+				</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-esc.webp" width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-cry.webp"  width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-cough.webp" width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-laugh.webp" width="600" height="400"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<p>
+		The audio events classification ability can prevent the model predicting unexisting word in the environment noisy recordings.
+	</p>
+	<div class="table-responsive pt-3">
+		<table class="table table-hover pt-2">
+			<thead>
+			<tr>
+			<th style="text-align: center">Audio </th>
+			<th style="text-align: center">Whisper </th>
+			<th style="text-align: center">SenseVoice-Large </th>
+			<th style="text-align: center">SenseVoice-Small</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Applause.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> Thank you.</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Applause|><|/Applause|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Applause|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Laughter.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> laughing</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Laughter|><|/Laughter|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Laughter|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Cough.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> Pfft.</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Event|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Cough|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Cry.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> <|en|><|transcribe|><|notimestamps|> I love you.</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Event|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Cry|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Breath.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|ja|><|transcribe|><|notimestamps|>ふーふーふー</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Event|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Breath|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Sneeze.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> I can't!</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Event|></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|Unknown_Emo|><|Sneeze|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Other.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> so</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Applause|><|/Applause|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Unknown_Event|></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 
 

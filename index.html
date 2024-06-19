@@ -26,7 +26,7 @@
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<div class="text-center">
-	<h2>FunAudioLLM: Voice Understanding and Generating Models for Natural Interaction Between Humans and LLMs</h2>
+	<h2>FunAudioLLM: Fundamental Voice Understanding and Generating Models for Natural Interaction Between Humans and LLMs </h2>
 
       [<a href="https://arxiv.org/abs/2406.02430">Paper</a>]
 		[<a href="https://arxiv.org/abs/2406.02430">Code</a>]
@@ -63,9 +63,9 @@
 			<ul>
 				<li><a href="#SenseVoice-overview">Overview</a></li>
 				<li><a href="#SenseVoice-ASR"> Multilingaul Speech Recognition</a></li>
-				<li><a href="#SenseVoice-emotion">Emotion Recognition</a></li>
+				<li><a href="#SenseVoice-emotion">Speech Emotion Recognition</a></li>
 				<li><a href="#SenseVoice-audioevent">Audio Events Classification</a></li>
-				<li><a href="#SenseVoice-demo">Demo Samples</a></li>
+				<li><a href="#SenseVoice-demo">Rich Transcribe Demo Samples</a></li>
 			</ul>
 		</li>
 		<li><a href="#App-S2ST">Applications</a>
@@ -273,14 +273,14 @@
 				<tbody>
 					<tr>
 						<td style="vertical-align : middle;text-align:center;">Theo 'Crimson', is a fiery, passionate rebel leader. Fights with fervor for justice, but struggles with impulsiveness.<br>(翻译：西奥（Theo）‘绯红’，是一位火热、充满激情的反叛领袖。他为正义而战，斗志高昂，但容易冲动。)</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instruct/speaker_identity/speaker_identity1.wav" autoplay/>Your browser does not support the audio element.</audio><br>这世上本没有英雄。若有所谓英雄，那便是把一切扛在肩上的人。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instruct/speaker_identity/speaker_identity1.wav" autoplay/>Your browser does not support the audio element.</audio><br>人总是要为自己所做的事情付出代价的，我不怕付出代价，只是不愿意让无辜的人来陪葬。</td>
 					</tr>
 					<tr>
 						<td style="vertical-align : middle;text-align:center;">Kai 'Torrent', is a cool-headed, tactical water mage who plans his moves carefully. A soothing presence with hidden depths.<br>(翻译：凯（Kai）‘激流’，是一位冷静、讲究策略的水法师，仔细规划每一步行动。他是一个具有安抚作用的存在，内心深藏深度。)</td>
 						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instruct/speaker_identity/speaker_identity2.wav" autoplay/>Your browser does not support the audio element.</audio><br>一个人最大的悲哀，不是牺牲，而是看着自己辛辛苦苦得来的一切，最后变成了别人的功劳。</td>
 					</tr>
 					<tr>
-						<td style="vertical-align : middle;text-align:center;">Iris 'Bloom', is a gentle, nurturing soul with a love for all living things. Her botanical knowledge is unparalleled.<br>(翻译：艾瑞斯（Iris）‘绽放’，是一位温柔、充满养育心灵的人，热爱所有生物。她对植物的知识无人能及。)</td>
+						<td style="vertical-align : middle;text-align:center;">Zara 'Wildfire', is an impulsive, fearless firebrand who loves a challenge. Her bravery inspires others, though she often acts recklessly.<br>(翻译：扎拉（Wildfire）‘狂野之火’，是一个冲动而无畏的煽动者，她热爱挑战。她的勇敢鼓舞了他人，尽管她的行为常常是鲁莽的。)</td>
 						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instruct/speaker_identity/speaker_identity3.wav" autoplay/>Your browser does not support the audio element.</audio><br>真正的速度你是看不见的，就像风起云涌、日落月升，就像你不知道树叶什么时候变黄，不知道你的孩子什么时候长出第一颗牙来。</td>
 					</tr>
 
@@ -357,6 +357,10 @@
 				</tr>
 				</thead>
 				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;">A female speaker with normal pitch and normal speaking rate.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instruct/style/style0.wav" autoplay/>Your browser does not support the audio element.</audio><br>他讲的冷笑话虽然老套，但仍然让大家笑个不停。</td>
+					</tr>
 					<tr>
 						<td style="vertical-align : middle;text-align:center;">A female speaker with high pitch, normal speaking rate, and happy emotion.</td>
 						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/instruct/style/style1.wav" autoplay/>Your browser does not support the audio element.</audio><br>他讲的冷笑话虽然老套，但仍然让大家笑个不停。</td>
@@ -465,15 +469,278 @@
 	<h2 id="SenseVoice-overview" style="text-align: center;">Overview of SenseVoice</h2>
 	<body>
 	<p style="text-align: center;">
-		<img src="pics/overview-cosyvoice.png" height="400" width="1024">
+		<img src="pics/overview-sensevoice.png" height="400" width="1024">
 	</p>
 	</body>
 		<p style="text-align: center;" >
-			<b>Figure 1.</b> xxxxxx
+			<b>Figure 2.</b> An overview of the SenseVoice voice understanding model.
 </div>
 
 
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="SenseVoice-ASR" style="text-align: center;">Multilingaul Speech Recognition</h2>
+	<body>
+	<p style="text-align: center;">
+		<img src="pics/chinese_english_open_corpus.png" height="400" width="1024">
+	</p>
+	<p style="text-align: center;">
+		<img src="pics/common_voice.png" height="400" width="1024">
+	</p>
+	</body>
+		<p style="text-align: center;" >
+			<b>Figure 3.</b> Comparasion of SenseVoice and Whisper on multilingual speech recognition beachmarks.
+	<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">Wav </th>
+				<th style="text-align: center">Without Textnorm</th>
+				<th style="text-align: center">With Textnorm</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/zh/zh.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
+					<td style="vertical-align : middle;text-align:center;"><|zh|><|NEUTRAL|><|Speech|><|wotextnorm|>开放时间早上九点至下午五点</td>
+					<td style="vertical-align : middle;text-align:center;"><|zh|><|NEUTRAL|><|Speech|><|withtextnorm|>开放时间早上9点至下午5点。</td>
+					</tr>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/yue/yue.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
+					<td style="vertical-align : middle;text-align:center;"><|yue|><|NEUTRAL|><|Speech|><|wotextnorm|>呢几个字都表达唔到我想讲嘅意思</td>
+					<td style="vertical-align : middle;text-align:center;"><|yue|><|NEUTRAL|><|Speech|><|withtextnorm|>呢几个字都表达唔到，我想讲嘅意思。</td>
+					</tr>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/en/en.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|NEUTRAL|><|Speech|><|wotextnorm|>the tribal chieftain called for the boy and presented him with fifty pieces of gold</td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|NEUTRAL|><|Speech|><|withtextnorm|>The tribal chieftain called for the boy and presented him with 50 pieces of gold.</td>
+					</tr>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/ja/ja.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
+					<td style="vertical-align : middle;text-align:center;"><|ja|><|NEUTRAL|><|Speech|><|wotextnorm|>うちの中学は弁当制で持っていけない場合は50円の学校販売のパンを買う</td>
+					<td style="vertical-align : middle;text-align:center;"><|ja|><|NEUTRAL|><|Speech|><|withtextnorm|>うちの中学は弁当制で持っていけない 場合は、50 円の学校販売の パンを買う。</td>
+					</tr>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/ko/ko.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
+					<td style="vertical-align : middle;text-align:center;"><|ko|><|NEUTRAL|><|Speech|><|wotextnorm|>조 금만 생각 을 하 면서 살 면 훨씬 편할 거야</td>
+					<td style="vertical-align : middle;text-align:center;"><|ko|><|NEUTRAL|><|Speech|><|withtextnorm|>조 금만 생각 을 하 면서 살 면 훨씬 편할 거야.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</div>
 
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="SenseVoice-emotion" style="text-align: center;">Speech Emotion Recognition</h2>
+		<p> SenseVoice can also be used for discrete emotion recognition. Happy, Sad, Angry and Neutral are supported. 
+			We evaluate it on 7 popular emotion recognition dataset. 
+			The SenseVoice-Large can approaching or exceeding the SOTA results on most datasets even without target corpus finetuning.
+		</p>
+		<body>
+			<p style="text-align: center;">
+				<img src="pics/ser_result.webp">
+			</p>
+		</body>
+		<p style="text-align: center;" >
+			<b>Figure X.</b> Weighted Average Accuracy (WA(%)) comparison on 7 emotion recognition datasets. 
+			<a href="https://github.com/emo-box/EmoBox" target="_blank">EmoBox</a> is a recent speech emotion recognition benchmark based on Self-Supervised Models and Whisper.
+			<a href="https://huggingface.co/ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition" target="_blank">Model on HF</a> stands for the most popular speech emotion recognition model on HuggingFace.
+		</p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">Audio </th>
+				<th style="text-align: center">SenseVoice-Large </th>
+				<th style="text-align: center">SenseVoice-Small</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/zh_happy.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|zh|><|Speech|>英国的哲学家曾经说过。<|/Speech|><|HAPPY|></td>
+					<td style="vertical-align : middle;text-align:center;"><|zh|><|HAPPY|><|Speech|>英国的哲学家曾经说过。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/zh_sad.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|><|Speech|>英国的哲学家曾经说过。<|/Speech|><|SAD|></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|><|SAD|><|Speech|>英国的哲学家曾经说过。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/zh_angry.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|><|Speech|>英国的哲学家曾经说过。<|/Speech|><|ANGRY|></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|><|ANGRY|><|Speech|>英国的哲学家曾经说过。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/zh_neutral.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|><|Speech|>英国的哲学家曾经说过。<|/Speech|><|NEUTRAL|></td>
+						<td style="vertical-align : middle;text-align:center;"><|zh|><|NEUTRAL|><|Speech|>英国的哲学家曾经说过。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/en_happy.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|Speech|>I did go, and made many prisoners. <|/Speech|><|HAPPY|></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|HAPPY|><|Speech|>I did go and made many prisoners.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/en_sad.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|Speech|>I did go, and made many prisoners. <|/Speech|><|SAD|></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|SAD|><|Speech|>I did go and made many prisoners.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/en_angry.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|Speech|>I did go, and made many prisoners. <|/Speech|><|ANGRY|></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|ANGRY|><|Speech|>I did go and made many prisoners.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/ser/en_neutral.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|>I did go, and made many prisoners. <|/Speech|><|NEUTRAL|></td>
+						<td style="vertical-align : middle;text-align:center;"><|en|><|NEUTRAL|><|Speech|>I did go and made many prisoners.</td>
+					</tr>
+	
+				</tbody>
+			</table>
+		</div>
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="SenseVoice-AED" style="text-align: center;">Audio Events Classification</h2>
+	<p> Both SenseVoice-Small and SenseVoice-Large model can detect the audio event in the speech, including music, applause, laughter. 
+		The SenseVoice-Large can predict the start and end position of the audio event, 
+		while the SenseVoice Small can only predict what happned (only one event) in the audio, however, it can detect more events, such as coughing, sneezing, breathing and crying which could occur during human-machine interaction.
+	</p>
+	<p> Although the SenseVoice are trained on speech data, it can still classify the recording with only audio event.
+		We compare the SenseVoice with the audio event detection models <a href="https://github.com/microsoft/unilm/tree/master/beats" target="_blank">BEATS</a> 
+		and <a href="https://github.com/qiuqiangkong/audioset_tagging_cnn" target="_blank">PANNs</a> on 
+		environment sound classification, baby cry/laugh detection, coughing detection and talkshow event detection.
+	</p>
+	<div class="table-responsive pt-3">
+		<table class="table table-hover pt-2">
+			<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center"> <a href="https://github.com/karolpiczak/ESC-50" target="_blank">ESC-50</a> </th>
+					<th style="vertical-align : middle;text-align: center"> <a href="https://github.com/giulbia/baby_cry_detection/tree/master" target="_blank">Baby Cry Detection</a></th>
+					<th style="vertical-align : middle;text-align: center"> <a href="https://github.com/iiscleap/Coswara-Data/tree/master" target="_blank">Coswara</a></th>
+					<th style="vertical-align : middle;text-align: center">Inhome Talkshow </th>
+				</tr>
+				</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-esc.webp" width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-cry.webp"  width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-cough.webp" width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-laugh.webp" width="600" height="400"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<p>
+		The audio events classification ability can prevent the model predicting unexisting word in the environment noisy recordings.
+	</p>
+	<div class="table-responsive pt-3">
+		<table class="table table-hover pt-2">
+			<thead>
+			<tr>
+			<th style="text-align: center">Audio </th>
+			<th style="text-align: center">Whisper </th>
+			<th style="text-align: center">SenseVoice-Large </th>
+			<th style="text-align: center">SenseVoice-Small</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Applause.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> Thank you.</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Applause|><|/Applause|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Applause|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Laughter.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> laughing</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Laughter|><|/Laughter|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Laughter|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Cough.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> Pfft.</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Event|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Cough|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Cry.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> <|en|><|transcribe|><|notimestamps|> I love you.</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Event|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Cry|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Breath.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|ja|><|transcribe|><|notimestamps|>ふーふーふー</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Event|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Breath|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Sneeze.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> I can't!</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Event|></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|Unknown_Emo|><|Sneeze|></td>
+				</tr>
+				<tr>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/aed/Other.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align : middle;text-align:center;"><|en|><|transcribe|><|notimestamps|> so</td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Applause|><|/Applause|></td>
+					<td style="vertical-align : middle;text-align:center;"><|nospeech|><|Unknown_Emo|><|Unknown_Event|></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="SenseVoice-demo" style="text-align: center;">Rich Transcribe Demo Samples</h2>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">Wav</th>
+				<th style="text-align: center">Whisper-Lagre-V3 results</th>
+				<th style="text-align: center">SenseVoice-Large results</th>
+				<th style="text-align: center">SenseVoice-Small results</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/rich-asr/英文-中文-腾格尔-天堂.wav" autoplay/>Your browser does not support the audio element.</audio><br></td>
+						<td style="vertical-align : middle;text-align:center;">Tangri with his song, Heaven. Heaven. so Yeah! Absolute shock, but in a great way. Wow. That was awesome. That was awesome. What way to open a song. That was awesome. Awesome. I'd love to check out some more Mongolian throat singing stuff. That is correct, right? It is Mongolian. Let me know, I'd love to check out more. I think a lot of you want me to check out The Who. If you guys still want me to, I'd be more than happy to. so晚安的天空清的湖水啊滴滴的草原 That is incredible. That is incredible. For those of you who don't know what I'm saying right now, the way he can make it sound like he's finished a note, you know, he like lowers it so low you can't even hear the note anymore. And then he brings it back and you can see his mouth still open. The way he can like finish a note but not finish it i don't know how to explain that that is an incredible talent that is amazing Hey</td>
+						<td style="vertical-align : middle;text-align:center;">Tangree with his song, Heaven. 🎼 <font style="color: red">啊。</font>🎵 Absolutely shocked but in a great way. That was awesome, 🎶 that was awesome 😊 what way to open a song, that was awesome, awesome, I'd love to check out some more Mongolian throat singing stuff, that is correct right, it is Mongolian. Let me know I'd love to check out more I think a lot of you want to check out the Who if you guys still want me to I'd be more than happy to. 🎼  <font style="color: red">蓝蓝的天空，清清的湖水啊，绿绿的草原</font>。That is incredible that is incredible for those of you who don't know what I'm saying right now the way he can make it sound like he's finished a note you know he like lowers it so low you can't even hear the note anymore and then he brings it back and you can see his mouth still open the way it makes the way he can like finish a note but not finish it . 😡 I don't know how to explain that that is an incredible talent that is amazing. 😊 <font style="color: red">这是我的家， 哎。</font>😊👏</td>
+						<td style="vertical-align : middle;text-align:center;">Tangry with his song, heaven. 🎼 Absolute shocked but in a great way my. 😊That was awesome, that was awesome what way to open a song that was awesome, awesome, 😡 I'd love to check out some more Moolian fruiting and stuff that is correct right it is Monolian let me know I'd love to check out more I think a lot of you want me to check out the who if you guys still want me to I'd be more than happy to. 🎼 蓝蓝的天空。清清的湖水呀，绿绿的草原。😔 That is incredible, that is incredible that is incredible for those of you who don't know what I'm saying right now, the way he can make it sound like he's finished a note, you know, he like lowers it's so low you you can't even. Hear the note anymore and then he brings it back and you can see his mouth still open the way it makes the way he can like finish a note but not finish it, I don't know how to explain that that is an incredible talent that is amazing. 😡 🎼 这是我的家哎。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/rich-asr/中文-日语-网红歌翻唱.wav" autoplay/>Your browser does not support the audio element.</audio><br></td>
+						<td style="vertical-align : middle;text-align:center;">哈喽各位这里是音乐萌泰堂我是小凡几日死生命四之后今天我们又有三首流行歌曲被日本看上了到底被注入了怎样的灵魂我们一起来听一下吧东宝石的这首野狼disco堪称今年最洗脑的神剧前段时间不但风靡大学校园也出了正宗的岗位教程没想到转眼间这首歌就被日语看上了被软萌的罗丽音一唱我竟然有种在停留暗循环的感觉嘘が本当か思いっきりして誰も忘れた君は一番だ知ってるからせーのこっちに尿もた前段这段时间由音雀诗听书品赵芳静演唱的古风电音《盲正》也凭借其闹旋律在短时间内成功刷屏这次更是被翻唱成日语版走红网络短短一周的时间视频已经快要达到200万的播放了幻想か 一粒の涙そんなの無理だよ私だけじゃ生きてない あなたのことを思えば胸がギュッとなんだかずっと痛いやこんなのない还记得那首欢专歌这次也被小姐姐翻唱成了日语版不过对于这首歌还是有些争议有网友表示空灵的嗓音也许更适合这首歌的曲风请不得自由一起来听听这首日语版的歌曲吧喜欢的小伙伴记得关注我们下期见拜拜 星の中へ 全速で飛んで</td>
+						<td style="vertical-align : middle;text-align:center;"><font style="color: red">君の虜になってしまえば、きっと。</font>🎵哈喽各位音乐萌太郎，我是小凡，继绿色生命4之后，今天我们又有三首流行歌曲被日本看上了，到底被注入了怎样的灵魂，我们一起来听一下吧。😊 东宝师的这首野狼disco，堪称今年最洗脑的神曲。前段时间不但风靡大学校园，就连陈伟霆也出了正宗的岗位教程。没想到转眼间，这首歌却被日语看上了，被软萌的罗丽音一唱，我竟然有种在听恋爱循环的感觉。😊 🎶 <font style="color: red">思いっきりして誰も忘れた君は一番だ知ってるからせーの、こっち見ようか？いてこっちに虹を描くいいね逆にこっちに虹を描いてこっちに目を描くすごい！</font>😊 🎵前段时间，由音雀视听出品，赵方婧演唱的古风电音芒种，也凭借洗脑旋律在短时间内成功刷屏，这次更是被翻唱成日语版，走红网络。短短一周的时间，视频已经快要达到200万的播放了。🎶 😊 <font style="color: red">そんなの無理だよ、私だけじゃ生きてらんないあなたのことを。</font>🎼 🎵 还记得那首换装歌曲素吗？这次也被小姐姐翻唱成了日语版，不过对于这首歌还是有些争议。有网友表示，空灵的嗓音也许更适合这首歌的曲风。节目最后一起来听这首日语版的歌曲吧，喜欢的小伙伴记得关注我们，下期见，拜拜。🎶 😊 <font style="color: red">星の中へ迅速で飛んで。</font>🎼</td>
+						<td style="vertical-align : middle;text-align:center;">🎼😊君の ト子になってし。电是音乐萌太头，我是小凡，接绿色生僻四之好。今天我们又有三首流行歌曲，被日本看上了，到底被注入了怎样的灵魂，我们一起来听一下吧。🎼😊 董宝石的这首野狼disco堪称今年最洗脑的神曲，前段时间不断风靡大学校园，却连陈伟霆也出了正宗的岗位教程。没想到转眼间，这首歌却被日语看上了，被软萌的萝莉音遗唱，我竟然有种在听恋爱循环的感觉。🎼 思いきり して 誰 を 忘れ た 君 は 一番 だ してる からせ の こっちげ に をこっちに虹字を 描くいいね 逆 に こっちに虹をかいで こっちにを 絵描くすごい。🎼😊 前段时间，由音雀实听书品赵方婧演唱的古风电音芒种，以凭借洗脑旋律在短时间内成功刷屏，这次更是悲愤战成日语版走红网络。短短一周的时间，视频已经快要达到200万的播放了。後 そんな の 無理だの 私 だけ じゃ 生き てらない あなた の ことも。と  思えば 胸れが けっと なん だか 尊 いた いやんな の。🎼😊 还记得那首换装歌曲素吗？这次也被小姐姐翻唱成了日语版。不过对于这首歌还是有些争议。有网友表，空里的嗓音也许更适合这首歌的曲风，最后一起来听听这首日语版的歌曲吧，喜欢的小伙伴记得关注，我们下期见，拜拜。星 の 中 へ 迅息 で そんね。</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/rich-asr/韩语-英语-综艺.wav" autoplay/>Your browser does not support the audio element.</audio><br></td>
+						<td style="vertical-align : middle;text-align:center;">안녕하세요 저는 세범, 영원, 신화입니다. 자 여러분들 한 주간 잘 지내셨나요? 네 한 주간 잘 지냈을 것 생각이 들고요. 오늘은 어떤 영상을 불러 드릴 거냐 혹시 밴드 음악 좋아요? 네 약간 락 그런거? 그냥 밴드요 밴드 음악 밴드 음악이 락 아닌가요? 밴드 좋아하는 밴드 누구 있어요? 저요? 우리나라 아니죠? 아니요 상관없어요. 아 진짜요? 형은요? Ft. Island? 그래서 알았어요. 아무튼 그런 그룹들이 많이 있는데 일단 그런 관련된 중국에서도 밴드 관련된 프로그램이 있다고 해요. 그래서 그 프로그램 영상을 한번 만나볼건데 그렇게 감안해서 생각하시고 보면서 어떤 음악을 하는지 근데 또 밴드가 밴드라는 지칭하는 단어가 악기들이 들어가는 그런 연주잖아요 그래서 느낌이 다를지 안 다를지는 잘 모르겠는데 좀 비슷할 것 같아요 한번 보도록 하겠습니다 아 미디엠 미디엠인가? 뭐야 레이저야? 오오오오......여여여여.......와우! 와우! 수명이</td>
+						<td style="vertical-align : middle;text-align:center;">안녕 하 세요 저는 새봄 영원 신화 입니다 여러분 들 한 주간 잘 지내 셨 나요? 😊 😀 오늘은 어떤 영상을 불러드릴 거냐 혹시 밴드 음악 좋아요 약간 락 그런거 그냥 밴드요 밴드 밴드 음악? 밴드 음악 좋아하는 밴드 누구 있어요 저요 우리나라 아니면 상관없어요 아 🎼🎵 그래서 그런 곡 들이 많이 있 는데 그런 관련 된 중국 에 서도 밴드 관련 된 🎶 프로그램 이 있 다고 해요？그래서, 그 프로그램 영상 을 한번 만나 볼 건데 그렇게 감안 해서 생각 하 시고, 보 면>서 어떤 음악 을 하나, 😊 또 밴드가 밴드라는 지칭하는 단어가 악기들이 들어가는 그런 연주잖아요 그래서 느낌이 다르지 안 다르지는 잘 모르겠는데 좀 비슷할 것 같아요 그래서 한번 보도록 하겠습니다. 😊 🎼 들어왔다 약간 갤러드, 온라인,  🎵 저 뒤에 사람 있는 게 신기해 화면이 아니라 이거 레이저인가요?  저렇게 조절이 가능해져요? 그래야 되 🎶 <font style="color: red">지요</font> 😊 </td>
+						<td style="vertical-align : middle;text-align:center;">자 저 요새 안녕하세요~ 저는 세봄 영원 씨입니다 자 여러분들 한 조각간 잘 지내셨나요? 아 에 잘냈을 거 생이 들 오늘 은 어떤 영상 을 풀 드을 거냐혹시 밴드 음악 좋아요 약간 락 그런 거 그냥 밴드 밴드 밴드 음악. 😊 🎼 밴 드 밴 밴드 좋아하는 밴 누구 있어요 저요 뭐 우리나라 라오탕 아 형요 앰프랜드? 그 뭐 그런 그룹들이 많이 있는데 그런 관련된 중국에서도 밴드 관련된 이제 프로그램이 있다고 해요 그래서 그 프로그램 영상 한번 만나볼 건데 그렇게 가안서 생각하시고 보면서 어떤 음악을 하나?  또 밴드가 밴드라는 지칭한 단어가 결국 악기들이 들어가는 그런 연주잖아요 그래서 느낌이 다르지 안 다를지는 잘 모르겠는데 좀 좀 비슷할 것 같아요 한번 보도록 하겠습니다. 🎼 좋왔다 약간갤러디가야.  😊 뒤에 사람 있는게 화면이 아니라 이거 레이저인가. 저렇게 도저히 저. 이게 되요. 👏</td>
+					</tr>
+
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/rich-asr/无间道-天台.wav" autoplay/>Your browser does not support the audio element.</audio><br></td>
+						<td style="vertical-align : middle;text-align:center;">你現在打的電話暫時都沒有 Mary,對不起我選了做好人的我現在就去見陳永仁無論如何,我會給他一個身分 我現在在你身邊,你也知道嗎? The park is a little bit far from the city center, but it's still a good place to go.  НАПРЯЖЕННАЯ МУЗЫКА  so   Kjell Kjell 挺熟悉的我也有個學堂你這個臥底真是有趣簡稱也是特殊 我不像你,我見得光。我要的東西呢?我要的東西你也未必帶來。那你覺得怎樣?像曬太陽一樣嗎?給我一個機會吧。怎麼給你機會? 我以前沒得選擇,現在想選擇好人。好呀,跟花君說吧。你叫我死?對不起我是警察誰知道? 慢用 差眼放大军放下槍,放下槍再說你頭兒是韓心的臥底證據在我手上有什麼事回警署再說放下槍,立刻放下槍我報警了我為什麼要相信你你不用相信我</td>
+						<td style="vertical-align : middle;text-align:center;">🎼🎵你而家打嘅电话暂时未能接通，请喺哔一声之后留低口水，🎶 mary sorry我拣咗做好人嘅，我而家就去见陈永仁无论点都好啦，我会俾翻个身份佢个档案喺，我电脑里边密码，系你生日日期。❓ 🎼几熟手啊，我都入过学堂啊，你啲卧底真系得意嘅，简称都系。我唔止得你，我见得光我要嘅嘢咧，我要嘅嘢，你都未必带嚟咯。咁，即，系点啊，所以晒晒太阳咁啊。俾个机会我点俾机会你啊，我以前冇得拣，我而家想拣翻做好人。好啊，同法官讲啦，睇下俾唔俾，你做好人。你这要我谁呀？对不起，外差呀，不要紧。🎼🎵咪喐差人放低枪，放咗两场先讲，你阿头系何🎶心何底证据喺我手度有咩事翻差馆先讲放低枪，即刻放低。😡 🎵 我报咗警噶啦，我点解要信你啊，你唔使信我。😡 🎶 🎼</audio></td>
+						<td style="vertical-align : middle;text-align:center;"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<p>*Note: Audio examples are segmented into 15-second chunks without using Voice Activity Detection (VAD) and then processed by the ASR model. The ASR results are concatenated, and special tokens are removed. No language prompt is added during decoding. For emotional context, 😊 denotes HAPPY, 😡 denotes ANGRY, and 😔 denotes SAD.
+			For audioevent, 🎼 denotes music, 😀 denotes laugh and 👏 denotes applause. Additional, for Sensevoice-Large, 🎵 and 🎶 stands for the begin and the end of the background music, and <font style="color: red">red font</font> stands for lyric (text without <|Speech|>).
+		</p>
+</div>
 
 
 

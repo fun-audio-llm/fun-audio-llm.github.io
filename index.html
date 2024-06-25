@@ -508,15 +508,16 @@
 	<body>
 	<p style="text-align: center;">
 		<img src="pics/overview-sensevoice.png" height="400" width="1024">
-	</p>
 	</body>
 		<p style="text-align: center;" >
-			<b>Figure 2.</b> An overview of the SenseVoice voice understanding model.
+			<b>Figure 2.</b> An overview of the SenseVoice Models. SenseVoice is a speech foundation model with multiple speech understanding capabilities, including ASR, LID, SER, and AED. SenseVoice-Small, an encoder-only speech foundation model for fast speech understanding, and SenseVoice-Large, an encoder-decoder speech foundation model for more accurate speech understanding with more languages supported.
 </div>
 
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="SenseVoice-ASR" style="text-align: center;">Multilingaul Speech Recognition</h2>
+	</p> The SenVoice model has multilingual speech recognition capabilities. SenseVoice-Small supports recognition of Chinese, Cantonese, English, Japanese, and Korean, while SenseVoice-Large can recognize additional languages including French, Spanish, Italian, Russian, Indonesian, Thai, German, and more.
+		 We have conducted evaluations on open-source Chinese, English, and Common Voice testsets, and performed runtime tests on the A800-80G machine with batchsize 1 and beamsize 5. </p>
 	<body>
 	<p style="text-align: center;">
 		<img src="pics/chinese_english_open_corpus.png" height="400" width="1024">
@@ -592,7 +593,7 @@
 			</table>
 			<p style="text-align: center;" ><b>Tabel 1.</b> Comparasion of SenseVoice and Whisper on Runtime Benchmark.
 		</div>
-		<p> We evaluates the runtime performance of SenseVoice and Whisper on GPU A800-80G with batchsize 1 and beamsearch 5.
+
 
 	<div class="table-responsive pt-3">
 			<table class="table table-hover pt-2">

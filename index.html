@@ -26,7 +26,7 @@
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<div class="text-center">
-	<h2>FunAudioLLM: Fundamental Voice Understanding and Generating Models for Natural Interaction Between Humans and LLMs </h2>
+	<h2>FunAudioLLM: Fundamental Voice Understanding and Generation Models for Natural Interaction Between Humans and LLMs </h2>
 
       [<a href="https://arxiv.org/abs/2406.02430">Paper</a>]
 		[<a href="https://arxiv.org/abs/2406.02430">Code</a>]
@@ -53,7 +53,16 @@
 	<p>
 	<b>Contents</b>
       <ul>
-        <li><a href="#CosyVoice-overview">Voice Generating Model: CosyVoice</a>
+      	<li><a href="#App-S2ST">Applications</a>
+			<ul>
+				<li><a href="#App-S2ST">Speech-to-Speech Translation</a></li>
+				<li><a href="#App-E-chat">Emotional VoiceChat</a></li>
+				<li><a href="#App-agentic">Interactive BroadCast</a></li>
+				<li><a href="#App-QA">Rich QA</a></li>
+				<li><a href="#App-audiobook">AudioBook</a></li>
+			</ul>
+		  </li>
+        <li><a href="#CosyVoice-overview">Voice Generation Model: CosyVoice</a>
 			<ul>
 				<li><a href="#CosyVoice-overview">Overview</a></li>
 				<li><a href="#CosyVoice-basic">Multi-lingual Voice Generation</a></li>
@@ -73,14 +82,7 @@
 				<li><a href="#SenseVoice-demo">Rich Transcribe Demo Samples</a></li>
 			</ul>
 		</li>
-		<li><a href="#App-S2ST">Applications</a>
-			<ul>
-				<li><a href="#App-S2ST">Speech-to-Speech Translation</a></li>
-				<li><a href="#App-agentic">Interactive Broadcast</a></li>
-				<li><a href="#App-VoiceChat">Emotional VoiceChat</a></li>
-			</ul>
-		</li>
-      </ul>
+    </ul>
 	</p>
 
 </div>
@@ -516,8 +518,7 @@
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="SenseVoice-ASR" style="text-align: center;">Multilingaul Speech Recognition</h2>
-	</p> The SenVoice model has multilingual speech recognition capabilities. SenseVoice-Small supports recognition of Chinese, Cantonese, English, Japanese, and Korean, while SenseVoice-Large can recognize additional languages including French, Spanish, Italian, Russian, Indonesian, Thai, German, and more.
-		 We have conducted evaluations on open-source Chinese, English, and Common Voice testsets, and performed runtime tests on the A800-80G machine with batchsize 1 and beamsize 5. </p>
+	</p> We compared the multilingual recognition performance and inference efficiency of SenseVoice and Whisper on open-source benchmark datasets, including AISHELL-1, AISHELL-2, Wenetspeech, Librispeech, and Common Voice. The inference efficiency evaluation was conducted using the A800 machine. SenseVoice-small employs a non-autoregressive end-to-end architecture, resulting in extremely low inference latency—7 times faster compared to Whisper-small and 17 times faster compared to Whisper-large. </p>
 	<body>
 	<p style="text-align: center;">
 		<img src="pics/chinese_english_open_corpus.png" height="400" width="1024">
@@ -591,7 +592,7 @@
 				</tbody>
 
 			</table>
-			<p style="text-align: center;" ><b>Tabel 1.</b> Comparasion of SenseVoice and Whisper on Runtime Benchmark.
+			<p style="text-align: center;" ><b>Tabel 1.</b> Comparasion of model architecture, parameter scale, supported languages, and inference efficiency of SenseVoice, Paraformer, and Whisper. SenseVoice-small employs a non-autoregressive architecture, which offers a significant advantage in inference efficiency compared to Whisper.
 		</div>
 
 
@@ -599,9 +600,9 @@
 			<table class="table table-hover pt-2">
 				<thead>
 				<tr>
-				<th style="text-align: center">Wav </th>
-				<th style="text-align: center">Without Inverse Text Normalization</th>
-				<th style="text-align: center">With Inverse Text Normalization</th>
+				<th style="text-align: center">Speech </th>
+				<th style="text-align: center">w/o ITN</th>
+				<th style="text-align: center">w ITN</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -632,7 +633,7 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		  <p style="text-align: center;" ><b>Tabel 2.</b> SenseVoice-small can control whether to perform Inverse Text Normalization (ITN) during recognition via the tag prompt."
 </div>
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
@@ -863,11 +864,14 @@
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="SenseVoice-demo" style="text-align: center;">Rich Transcribe Demo Samples</h2>
+		<p>*Note: Audio examples are segmented into 15-second chunks without using Voice Activity Detection (VAD) and then processed by the ASR model. The ASR results are concatenated, and special tokens are removed. No language prompt is added during decoding. For emotional context, 😊 denotes HAPPY, 😡 denotes ANGRY, and 😔 denotes SAD.
+			For audioevent, 🎼 denotes music, 😀 denotes laugh and 👏 denotes applause. Additional, for Sensevoice-Large, 🎵 and 🎶 stands for the begin and the end of the background music, and <font style="color: red">red font</font> stands for lyric (text without <|Speech|>).
+		</p>
 		<div class="table-responsive pt-3">
 			<table class="table table-hover pt-2">
 				<thead>
 				<tr>
-				<th style="text-align: center">Wav</th>
+				<th style="text-align: center">Audio</th>
 				<th style="text-align: center">Whisper-Lagre-V3 results</th>
 				<th style="text-align: center">SenseVoice-Large results</th>
 				<th style="text-align: center">SenseVoice-Small results</th>
@@ -936,9 +940,6 @@
 				</tbody>
 			</table>
 		</div>
-		<p>*Note: Audio examples are segmented into 15-second chunks without using Voice Activity Detection (VAD) and then processed by the ASR model. The ASR results are concatenated, and special tokens are removed. No language prompt is added during decoding. For emotional context, 😊 denotes HAPPY, 😡 denotes ANGRY, and 😔 denotes SAD.
-			For audioevent, 🎼 denotes music, 😀 denotes laugh and 👏 denotes applause. Additional, for Sensevoice-Large, 🎵 and 🎶 stands for the begin and the end of the background music, and <font style="color: red">red font</font> stands for lyric (text without <|Speech|>).
-		</p>
 </div>
 
 

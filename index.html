@@ -942,6 +942,186 @@
 </div>
 
 
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="SenseVoice-demo" style="text-align: center;">Rich Q&A with LLM</h2>
+	<p> Rich transcription can provide more information for the LLM, as a result, the LLM can better analyze the ASR result and answer the user's question.</p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">Wav</th>
+				<th style="text-align: center">Rich Transcription</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/rich-asr/英文-中文-腾格尔-天堂.wav" autoplay/>Your browser does not support the audio element.</audio><br></td>
+						<td style="vertical-align : middle;text-align:center;">Tangree with his song, Heaven. 🎼 <font style="color: red">啊。</font>🎵 Absolutely shocked but in a great way. That was awesome, 🎶 that was awesome 😊 what way to open a song, that was awesome, awesome, I'd love to check out some more Mongolian throat singing stuff, that is correct right, it is Mongolian. Let me know I'd love to check out more I think a lot of you want to check out the Who if you guys still want me to I'd be more than happy to. 🎼  <font style="color: red">蓝蓝的天空，清清的湖水啊，绿绿的草原</font>。That is incredible that is incredible for those of you who don't know what I'm saying right now the way he can make it sound like he's finished a note you know he like lowers it so low you can't even hear the note anymore and then he brings it back and you can see his mouth still open the way it makes the way he can like finish a note but not finish it . 😡 I don't know how to explain that that is an incredible talent that is amazing. 😊 <font style="color: red">这是我的家， 哎。</font>😊👏</td>
+					</tr>					
+				</tbody>
+			</table>
+
+			<table class="table table-hover pt-2">
+				<thead>
+					<tr>
+					<th style="text-align: center"></th>
+					<th style="text-align: center">Q&A with Chinese</th>
+					</tr>
+					</thead>
+				<tbody>
+					<tr>
+						<td> 用户 </td>
+						<td style="vertical-align : middle;">
+							这是一段语音识别的转写结果，请帮我分析这段的录音
+						</td>
+					</tr>
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							这段录音内容是对一段音乐表演，特别是蒙古族喉唱（Mongolian throat singing）的热烈反响和评价。以下是对录音内容的详细分析：
+							<ul> 
+								<li>
+								开场提及的歌曲与艺术家: 开始时，说话者表达了对某位艺术家（可能是Tangree）和他的歌曲《天堂》的强烈共鸣，使用了"Absolutely shocked but in a great way"来形容初次听感，显示出这种音乐给他带来了极大的惊喜和正面冲击。这里使用了😊表情，显示出说话者对于歌曲开场的极度满意。
+								</li>
+								<li>
+									歌曲的背景音乐: 紧接着，说话者提到了歌曲的背景音乐，并强调了这首歌曲的独特风格，并表示这是蒙语 throat singing的特色。
+								</li>
+								<li>
+									描述蒙古喉唱的独特技巧: 说话者尝试解释蒙古喉唱中一种令人难以置信的技巧，即歌手能将音调降至极低，几乎听不见，然后再将其带回，同时保持口型不变，创造出一种音符似乎结束又未完全结束的效果。他对这种独特技艺表示惊叹，称之为“incredible talent”。
+								</li>
+								<li>
+									引用歌词及情感表达: 之后，录音中直接转录了一段中文歌词，“蓝蓝的天空，清清的湖水啊，绿绿的草原”，这可能是在描述蒙古自然风光，体现了歌曲中蕴含的美景与情感，说话者用“incredible”形容这种技巧，特别是歌手如何在音符结束时降低音调至几乎听不见，再将其带回，这种能力让他感到难以置信且兴奋（😡，在这里可能更准确地表达为赞叹或激动而非生气），再次强调了歌手的非凡才能。
+								</li>
+								<li>
+									个人情感的触动: 最后，可能“这是我的家，哎”这部分歌词触动了他的个人情感，配以鼓掌（👏），表达了深深的认同和喜爱。
+								</li>
+							</ul>
+								综上所述，这段录音不仅展现了说话者对蒙古喉唱艺术的深深着迷和高度评价，还体现了音乐跨越文化和语言界限、触动人心的力量。
+						</td>
+					</tr>
+					<tr>
+						<td> 用户 </td>
+						<td style="vertical-align : middle;">
+							帮我把歌词部分截取出来
+						</td>
+					</tr>
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							歌词部分如下
+							<ul> 
+								<li>
+									蓝蓝的天空，清清的湖水啊，绿绿的草原。
+								</li>								
+								<li>
+									这是我的家， 哎。
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td> 用户 </td>
+						<td style="vertical-align : middle;">
+							总结观众对音乐的评价和态度
+						</td>
+					</tr>	
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							从转写结果来看，观众对Tangree的表演和蒙古喉唱技巧表示了非常高的评价，并且提到了观众感到非常震撼和兴奋，并且在表演结束后得到了掌声（👏）回应。这些都表明观众对这次表演感到非常满意和高兴，因此可以推测观众的态度是积极和乐观的。
+						</td>
+					</tr>										
+				</tbody>
+			</table>
+
+			<table class="table table-hover pt-2">
+				<thead>
+					<tr>
+					<th style="text-align: center"></th>
+					<th style="text-align: center">Q&A with English</th>
+					</tr>
+					</thead>
+				<tbody>
+					<tr>
+						<td> User </td>
+						<td style="vertical-align : middle;">
+							Please analysis this ASR result from an audio.
+						</td>
+					</tr>
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							The ASR (Automatic Speech Recognition) result provided seems to be a commentary or reaction to a performance by someone named Tangree, featuring his song "Heaven," which incorporates Mongolian throat singing. Below is an analysis breaking down the key points and emotions conveyed:
+							<ul> 
+								<li>
+									Initial Reaction to the Song: The commentator expresses being "absolutely shocked but in a great way" indicating a strong positive surprise. They use the word "awesome" repeatedly, emphasizing their admiration for the opening of the song and the performance technique. This part of the response is marked with a happy tone (😊).
+								</li>
+								<li>
+									Interest in Mongolian Throat Singing: The speaker explicitly states their interest in exploring more Mongolian throat singing, confirming the genre they're hearing. They seem enthusiastic about recommending this type of music to others, suggesting a willingness to share and learn more (👏)
+								</li>
+								<li>
+									Description of Performance Technique: When the speaker mentions "the way he can make it sound like he's finished a note...lowers it so low you can't even hear the note anymore and then he brings it back," they are highlighting a specific technique in Mongolian throat singing, possibly referring to the manipulation of overtones or the use of deep, resonant sounds. They find this talent "incredible" and "amazing," expressing excitement (😡) and awe.
+								</li>
+								<li>
+									Cultural Appreciation: The lyrics transcribed in Chinese characters (🎵 蓝蓝的天空，清清的湖水啊，绿绿的草原.), translate to "Blue skies, clear lake waters, green grasslands." This segment reflects a celebration of nature, typical of traditional Mongolian themes in music. The commentator continues to express amazement (😊) at the performance, reinforcing their appreciation for the cultural and artistic expression.
+								</li>
+								<li>
+									Personal Connection and Praise: The final line, 这是我的家， 哎. 😊👏 translates to "This is my home, ah." It suggests a sense of belonging or personal connection the commentator might feel with the music or the sentiment expressed in the song. The use of "ah" could indicate a sigh of contentment or nostalgia, followed by a happy emoji and applause, further emphasizing their positive emotional response and approval.
+								</li>
+							</ul>
+							Overall, the ASR result captures a deeply appreciative and emotionally charged reaction to a unique and culturally rich musical performance, showcasing admiration for the performer's skill and the genre of Mongolian throat singing.
+						</td>
+					</tr>
+					<tr>
+						<td> User </td>
+						<td style="vertical-align : middle;">
+							Show me the lyrics 
+						</td>
+					</tr>
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							Based on the segments provided within your ASR result, here's a compilation of the lyrics mentioned or transcribed:
+							<ul> 
+								<li>
+									蓝蓝的天空，清清的湖水啊，绿绿的草原。
+								</li>								
+								<li>
+									这是我的家， 哎。
+								</li>
+							</ul>
+							English Translation:
+							<ul> 
+								<li>
+									Blue skies, clear lake waters, oh green grasslands.
+								</li>								
+								<li>
+									This is my home, ah.
+								</li>
+							</ul>
+							Please note that these lyrics are fragmented and represent only parts of the song "Heaven" by Tangree as captured in your ASR output. The full lyrics may contain more verses and choruses that were not included in your provided transcription. If you're looking for the complete lyrics, you might want to search directly online or refer to the official release of the song for the full text.							
+						</td>
+					</tr>
+					<tr>
+						<td> User </td>
+						<td style="vertical-align : middle;">
+							Please summary how does the listener think about this song.
+						</td>
+					</tr>	
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							The listener is thoroughly impressed and delighted by the song "Heaven" performed by Tangree. They find the use of Mongolian throat singing surprising and awesome, particularly praising the singer's ability to manipulate notes in a unique and skillful manner. The song evokes strong positive emotions, prompting the listener to express happiness, excitement, and a desire to explore more of this music genre. They also form an emotional connection with the lyrics, which celebrate nature and the sense of home. Overall, the song leaves a profound impact, combining artistic appreciation, cultural intrigue, and emotional resonance.
+						</td>
+					</tr>										
+				</tbody>
+			</table>
+
+		</div>
+</div>
+
+
+
 
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">

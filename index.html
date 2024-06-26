@@ -26,7 +26,7 @@
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<div class="text-center">
-	<h2>FunAudioLLM: Fundamental Voice Understanding and Generating Models for Natural Interaction Between Humans and LLMs </h2>
+	<h2>FunAudioLLM: Voice Understanding and Generation Foundation Models for Natural Interaction Between Humans and LLMs </h2>
 
       [<a href="https://arxiv.org/abs/2406.02430">Paper</a>]
 		[<a href="https://arxiv.org/abs/2406.02430">Code</a>]
@@ -44,12 +44,25 @@
 	</div>
 	<p><b>Abstract.</b>
 		We introduce FunAudioLLM, ....
+		<li> We have open-sourced SenseVoice, an audio understanding large model capable of high-precision multilingual speech recognition, emotion recognition, and audio event detection. SenseVoice-small supports multilingual recognition in Chinese, English, Cantonese, Japanese, and Korean. SenseVoice-large, like Whisper-large, supports speech recognition in over 50 languages and has a significant advantage in recognition for Chinese and Cantonese. </li>
+		<li> SenseVoice-small employs a non-autoregressive end-to-end architecture, resulting in extremely low inference latency—7 times faster compared to Whisper-small and 17 times faster compared to Whisper-large. Additionally, SenseVoice boasts state-of-the-art emotion recognition capabilities, making it suitable for building low-latency, human-like voice interaction systems. </li>
+		<li> By integrating SenseVoice, CosyVoice, and LLM like Qwen, we have developed a suite of rich application demos, including: 1) End-to-End Speech Translation: Speak in foreign languages using your own voice; 2) Emotional Voice Chat: Allow the model to understand your emotions for more human-like voice interactions; 3) Interactive Podcast: Engage in live discussions with multiple large models as part of a podcast broadcast; 4) Rich-QA: Get the model to analyze and summarize your audio content through interactive questioning; 5) AudioBook: Enable the model to perform expressive, multi-character narration for your audiobooks. </li>
+</p>
 	</p>
 
 	<p>
 	<b>Contents</b>
       <ul>
-        <li><a href="#CosyVoice-overview">Voice Generating Model: CosyVoice</a>
+      	<li><a href="#App-S2ST">Applications</a>
+			<ul>
+				<li><a href="#App-S2ST">Speech-to-Speech Translation</a></li>
+				<li><a href="#App-E-chat">Emotional VoiceChat</a></li>
+				<li><a href="#App-agentic">Interactive BroadCast</a></li>
+				<li><a href="#App-QA">Rich QA</a></li>
+				<li><a href="#App-audiobook">AudioBook</a></li>
+			</ul>
+		  </li>
+        <li><a href="#CosyVoice-overview">Voice Generation Model: CosyVoice</a>
 			<ul>
 				<li><a href="#CosyVoice-overview">Overview</a></li>
 				<li><a href="#CosyVoice-basic">Multi-lingual Voice Generation</a></li>
@@ -69,14 +82,6 @@
 				<li><a href="#SenseVoice-demo">Rich Transcribe Demo Samples</a></li>
 			</ul>
 		</li>
-		<li><a href="#App-S2ST">Applications</a>
-			<ul>
-				<li><a href="#App-S2ST">Speech-to-Speech Translation</a></li>
-				<li><a href="#App-agentic">Interactive Broadcast</a></li>
-				<li><a href="#App-VoiceChat">Emotional VoiceChat</a></li>
-			</ul>
-		</li>
-      </ul>
 	</p>
 
 </div>
@@ -504,25 +509,23 @@
 	<body>
 	<p style="text-align: center;">
 		<img src="pics/overview-sensevoice.png" height="400" width="1024">
-	</p>
 	</body>
 		<p style="text-align: center;" >
-			<b>Figure 2.</b> An overview of the SenseVoice voice understanding model.
+			<b>Figure 2.</b> An overview of the SenseVoice Models. SenseVoice is a speech foundation model with multiple speech understanding capabilities, including ASR, LID, SER, and AED. SenseVoice-Small, an encoder-only speech foundation model for fast speech understanding, and SenseVoice-Large, an encoder-decoder speech foundation model for more accurate speech understanding with more languages supported.
 </div>
 
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="SenseVoice-ASR" style="text-align: center;">Multilingaul Speech Recognition</h2>
+	</p> We compared the multilingual recognition performance and inference efficiency of SenseVoice and Whisper on open-source benchmark datasets, including AISHELL-1, AISHELL-2, Wenetspeech, Librispeech, and Common Voice. The inference efficiency evaluation was conducted using the A800 machine. SenseVoice-small employs a non-autoregressive end-to-end architecture, resulting in extremely low inference latency—7 times faster compared to Whisper-small and 17 times faster compared to Whisper-large. </p>
 	<body>
-	<p style="text-align: center;">
-		<img src="pics/chinese_english_open_corpus.png" height="400" width="1024">
-	</p>
-	<p style="text-align: center;">
-		<img src="pics/common_voice.png" height="400" width="1024">
-	</p>
+		<p style="text-align: center;">
+			<img src="pics/chinese_english_open_corpus.png" height="240" width="550">
+			<img src="pics/common_voice.png" height="240" width="550">
+		</p>
 	</body>
 		<p style="text-align: center;" >
-			<b>Figure 3.</b> Comparasion of SenseVoice and Whisper on multilingual speech recognition beachmarks.
+			<b>Figure 3.</b> Comparasion of SenseVoice and Whisper on multilingual speech recognition beachmarks. </p>
 
 	<div class="table-responsive pt-3">
 			<table class="table table-hover pt-2">
@@ -532,7 +535,9 @@
 					<th style="text-align: center">Framework</th>
 					<th style="text-align: center">Parameters</th>
 					<th style="text-align: center">Support Language</th>
-					<th style="text-align: center">RTF</th>
+					<th style="text-align: center">3s audio process time</th>
+					<th style="text-align: center">5s audio process time</th>
+					<th style="text-align: center">10 audio process time</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -541,81 +546,92 @@
 						<td style="vertical-align : middle;text-align:center;">Autoregressive</td>
 						<td style="vertical-align : middle;text-align:center;">244 M</td>
 						<td style="vertical-align : middle;text-align:center;">50+</td>
-						<td style="vertical-align : middle;text-align:center;">0.042</td>
+						<td style="vertical-align : middle;text-align:center;">285ms</td>
+						<td style="vertical-align : middle;text-align:center;">367ms</td>
+						<td style="vertical-align : middle;text-align:center;">518ms</td>
 					</tr>
 					<tr>
 						<td style="vertical-align : middle;text-align:center;">Whisper-Large-V3</td>
 						<td style="vertical-align : middle;text-align:center;">Autoregressive</td>
 						<td style="vertical-align : middle;text-align:center;">1550 M</td>
 						<td style="vertical-align : middle;text-align:center;">50+</td>
-						<td style="vertical-align : middle;text-align:center;">0.111</td>
+						<td style="vertical-align : middle;text-align:center;">751ms</td>
+						<td style="vertical-align : middle;text-align:center;">1009ms</td>
+						<td style="vertical-align : middle;text-align:center;">1281ms</td>
 					</tr>
 					<tr>
 						<td style="vertical-align : middle;text-align:center;">Paraformer-zh</td>
 						<td style="vertical-align : middle;text-align:center;">Non-Autoregressive</td>
 						<td style="vertical-align : middle;text-align:center;">220 M</td>
 						<td style="vertical-align : middle;text-align:center;">zh</td>
-						<td style="vertical-align : middle;text-align:center;">0.009</td>
+						<td style="vertical-align : middle;text-align:center;">76ms</td>
+						<td style="vertical-align : middle;text-align:center;">85ms</td>
+						<td style="vertical-align : middle;text-align:center;">100ms</td>
 					</tr>
 					<tr>
 						<td style="vertical-align : middle;text-align:center;">SenseVoice-Small</td>
 						<td style="vertical-align : middle;text-align:center;">Non-Autoregressive</td>
 						<td style="vertical-align : middle;text-align:center;">223 M</td>
 						<td style="vertical-align : middle;text-align:center;">zh,yue,en,ja,ko</td>
-						<td style="vertical-align : middle;text-align:center;">0.007</td>
+						<td style="vertical-align : middle;text-align:center;">63ms</td>
+						<td style="vertical-align : middle;text-align:center;">67ms</td>
+						<td style="vertical-align : middle;text-align:center;">70ms</td>
 					</tr>
 					<tr>
 						<td style="vertical-align : middle;text-align:center;">SenseVoice-Large</td>
 						<td style="vertical-align : middle;text-align:center;">Autoregressive</td>
 						<td style="vertical-align : middle;text-align:center;">1587 M</td>
 						<td style="vertical-align : middle;text-align:center;">50+</td>
-						<td style="vertical-align : middle;text-align:center;">0.113</td>
+						<td style="vertical-align : middle;text-align:center;">738ms</td>
+						<td style="vertical-align : middle;text-align:center;">1207ms</td>
+						<td style="vertical-align : middle;text-align:center;">1623ms</td>
 					</tr>
 				</tbody>
 
 			</table>
-			<p style="text-align: center;" ><b>Tabel 1.</b> Comparasion of SenseVoice and Whisper on Runtime Benchmark.
+			<p style="text-align: center;" ><b>Tabel 1.</b> Comparasion of model architecture, parameter scale, supported languages, and inference efficiency of SenseVoice, Paraformer, and Whisper. SenseVoice-small employs a non-autoregressive architecture, which offers a significant advantage in inference efficiency compared to Whisper.
 		</div>
-		<p> We evaluates the runtime performance of SenseVoice and Whisper on GPU A800-80G with batchsize 1 and beamsearch 5.
+
 
 	<div class="table-responsive pt-3">
 			<table class="table table-hover pt-2">
 				<thead>
 				<tr>
-				<th style="text-align: center">Wav </th>
-				<th style="text-align: center">Without Textnorm</th>
-				<th style="text-align: center">With Textnorm</th>
+				<th style="text-align: center">Speech </th>
+				<th style="text-align: center">w/o ITN</th>
+				<th style="text-align: center">w ITN</th>
 				</tr>
 				</thead>
 				<tbody>
 					<tr>
 					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/zh/zh.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
-					<td style="vertical-align : middle;text-align:center;"><|zh|><|NEUTRAL|><|Speech|><|woinversetextnorm|>开放时间早上九点至下午五点</td>
-					<td style="vertical-align : middle;text-align:center;"><|zh|><|NEUTRAL|><|Speech|><|withinversetextnorm|>开放时间早上9点至下午5点。</td>
+					<td style="vertical-align : middle;text-align:center;">开放时间早上九点至下午五点</td>
+					<td style="vertical-align : middle;text-align:center;">开放时间早上9点至下午5点。</td>
 					</tr>
 					<tr>
 					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/yue/yue.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
-					<td style="vertical-align : middle;text-align:center;"><|yue|><|NEUTRAL|><|Speech|><|woinversetextnorm|>呢几个字都表达唔到我想讲嘅意思</td>
-					<td style="vertical-align : middle;text-align:center;"><|yue|><|NEUTRAL|><|Speech|><|withinversetextnorm|>呢几个字都表达唔到，我想讲嘅意思。</td>
+					<td style="vertical-align : middle;text-align:center;">呢几个字都表达唔到我想讲嘅意思</td>
+					<td style="vertical-align : middle;text-align:center;">呢几个字都表达唔到，我想讲嘅意思。</td>
 					</tr>
 					<tr>
 					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/en/en.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
-					<td style="vertical-align : middle;text-align:center;"><|en|><|NEUTRAL|><|Speech|><|woinversetextnorm|>the tribal chieftain called for the boy and presented him with fifty pieces of gold</td>
-					<td style="vertical-align : middle;text-align:center;"><|en|><|NEUTRAL|><|Speech|><|withinversetextnorm|>The tribal chieftain called for the boy and presented him with 50 pieces of gold.</td>
+					<td style="vertical-align : middle;text-align:center;">the tribal chieftain called for the boy and presented him with fifty pieces of gold</td>
+					<td style="vertical-align : middle;text-align:center;">The tribal chieftain called for the boy and presented him with 50 pieces of gold.</td>
 					</tr>
 					<tr>
 					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/ja/ja.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
-					<td style="vertical-align : middle;text-align:center;"><|ja|><|NEUTRAL|><|Speech|><|woinversetextnorm|>うちの中学は弁当制で持っていけない場合は50円の学校販売のパンを買う</td>
-					<td style="vertical-align : middle;text-align:center;"><|ja|><|NEUTRAL|><|Speech|><|withinversetextnorm|>うちの中学は弁当制で持っていけない 場合は、50 円の学校販売の パンを買う。</td>
+					<td style="vertical-align : middle;text-align:center;">うちの中学は弁当制で持っていけない場合は50円の学校販売のパンを買う</td>
+					<td style="vertical-align : middle;text-align:center;">うちの中学は弁当制で持っていけない 場合は、50 円の学校販売の パンを買う。</td>
 					</tr>
 					<tr>
 					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/asr/ko/ko.mp3" autoplay/>Your browser does not support the audio element.</audio><br></td>
-					<td style="vertical-align : middle;text-align:center;"><|ko|><|NEUTRAL|><|Speech|><|woinversetextnorm|>조 금만 생각 을 하 면서 살 면 훨씬 편할 거야</td>
-					<td style="vertical-align : middle;text-align:center;"><|ko|><|NEUTRAL|><|Speech|><|withinversetextnorm|>조 금만 생각 을 하 면서 살 면 훨씬 편할 거야.</td>
+					<td style="vertical-align : middle;text-align:center;">조 금만 생각 을 하 면서 살 면 훨씬 편할 거야</td>
+					<td style="vertical-align : middle;text-align:center;">조 금만 생각 을 하 면서 살 면 훨씬 편할 거야.</td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
+		<p style="text-align: center;" ><b>Tabel 2.</b> SenseVoice-small can control whether to perform Inverse Text Normalization (ITN) during recognition via the tag prompt." </p>
+	</div>
 </div>
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
@@ -626,7 +642,7 @@
 		</p>
 		<body>
 			<p style="text-align: center;">
-				<img src="pics/ser_result.webp">
+				<img src="pics/ser_result.png">
 			</p>
 		</body>
 		<p style="text-align: center;" >
@@ -688,6 +704,8 @@
 				</tbody>
 			</table>
 		</div>
+		<p>Note* SenseVoice will predict a <|Unknown_Emo|> token when the emotation is weak or unclear, 
+		you can ban this token to obtain a result with low confidence level. </p>
 </div>
 
 
@@ -771,10 +789,10 @@
 				</thead>
 			<tbody>
 				<tr>
-					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-esc.webp" width="600" height="400"></td>
-					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-cry.webp"  width="600" height="400"></td>
-					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-cough.webp" width="600" height="400"></td>
-					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-laugh.webp" width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-esc.png" width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-cry.png"  width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-cough.png" width="600" height="400"></td>
+					<td style="vertical-align : middle;text-align:center;"><img src="pics/aed-laugh.png" width="600" height="400"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -844,11 +862,14 @@
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="SenseVoice-demo" style="text-align: center;">Rich Transcribe Demo Samples</h2>
+		<p>*Note: Audio examples are segmented into 15-second chunks without using Voice Activity Detection (VAD) and then processed by the ASR model. The ASR results are concatenated, and special tokens are removed. No language prompt is added during decoding. For emotional context, 😊 denotes HAPPY, 😡 denotes ANGRY, and 😔 denotes SAD.
+			For audioevent, 🎼 denotes music, 😀 denotes laugh and 👏 denotes applause. Additional, for Sensevoice-Large, 🎵 and 🎶 stands for the begin and the end of the background music, and <font style="color: red">red font</font> stands for lyric (text without <|Speech|>).
+		</p>
 		<div class="table-responsive pt-3">
 			<table class="table table-hover pt-2">
 				<thead>
 				<tr>
-				<th style="text-align: center">Wav</th>
+				<th style="text-align: center">Audio</th>
 				<th style="text-align: center">Whisper-Lagre-V3 results</th>
 				<th style="text-align: center">SenseVoice-Large results</th>
 				<th style="text-align: center">SenseVoice-Small results</th>
@@ -858,7 +879,7 @@
 					<tr>
 						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/rich-asr/英文-中文-腾格尔-天堂.wav" autoplay/>Your browser does not support the audio element.</audio><br></td>
 						<td style="vertical-align : middle;text-align:center;">Tangri with his song, Heaven. Heaven. so Yeah! Absolute shock, but in a great way. Wow. That was awesome. That was awesome. What way to open a song. That was awesome. Awesome. I'd love to check out some more Mongolian throat singing stuff. That is correct, right? It is Mongolian. Let me know, I'd love to check out more. I think a lot of you want me to check out The Who. If you guys still want me to, I'd be more than happy to. so晚安的天空清的湖水啊滴滴的草原 That is incredible. That is incredible. For those of you who don't know what I'm saying right now, the way he can make it sound like he's finished a note, you know, he like lowers it so low you can't even hear the note anymore. And then he brings it back and you can see his mouth still open. The way he can like finish a note but not finish it i don't know how to explain that that is an incredible talent that is amazing Hey</td>
-						<td style="vertical-align : middle;text-align:center;">Tangree with his song, Heaven. 🎼 <font style="color: red">啊。</font>🎵 Absolutely shocked but in a great way. That was awesome, 🎶 that was awesome 😊 what way to open a song, that was awesome, awesome, I'd love to check out some more Mongolian throat singing stuff, that is correct right, it is Mongolian. Let me know I'd love to check out more I think a lot of you want to check out the Who if you guys still want me to I'd be more than happy to. 🎼  <font style="color: red">蓝蓝的天空，清清的湖水啊，绿绿的草原</font>。That is incredible that is incredible for those of you who don't know what I'm saying right now the way he can make it sound like he's finished a note you know he like lowers it so low you can't even hear the note anymore and then he brings it back and you can see his mouth still open the way it makes the way he can like finish a note but not finish it . 😡 I don't know how to explain that that is an incredible talent that is amazing. 😊 <font style="color: red">这是我的家， 哎。</font>😊👏</td>
+						<td style="vertical-align : middle;text-align:center;">Tangree with his song, Heaven. 🎼 <font style="color: red">啊。</font>🎵 Absolutely shocked but in a great way. That was awesome, 🎶 that was awesome 😊 what way to open a song, that was awesome, awesome, I'd love to check out some more Mongolian throat singing stuff, that is correct right, it is Mongolian. Let me know I'd love to check out more I think a lot of you want to check out the Who if you guys still want me to I'd be more than happy to. 🎼  <font style="color: red">蓝蓝的天空，清清的湖水啊，绿绿的草原</font>。That is incredible that is incredible for those of you who don't know what I'm saying right now the way he can make it sound like he's finished a note you know he like lowers it so low you can't even hear the note anymore and then he brings it back and you can see his mouth still open the way it makes the way he can like finish a note but not finish it . 😡 I don't know how to explain that that is an incredible talent that is amazing. 😊 <font style="color: red">🎼 这是我的家， 哎。</font>😊👏</td>
 						<td style="vertical-align : middle;text-align:center;">Tangry with his song, heaven. 🎼 Absolute shocked but in a great way my. 😊That was awesome, that was awesome what way to open a song that was awesome, awesome, 😡 I'd love to check out some more Moolian fruiting and stuff that is correct right it is Monolian let me know I'd love to check out more I think a lot of you want me to check out the who if you guys still want me to I'd be more than happy to. 🎼 蓝蓝的天空。清清的湖水呀，绿绿的草原。😔 That is incredible, that is incredible that is incredible for those of you who don't know what I'm saying right now, the way he can make it sound like he's finished a note, you know, he like lowers it's so low you you can't even. Hear the note anymore and then he brings it back and you can see his mouth still open the way it makes the way he can like finish a note but not finish it, I don't know how to explain that that is an incredible talent that is amazing. 😡 🎼 这是我的家哎。</td>
 					</tr>
 					<tr>
@@ -917,10 +938,187 @@
 				</tbody>
 			</table>
 		</div>
-		<p>*Note: Audio examples are segmented into 15-second chunks without using Voice Activity Detection (VAD) and then processed by the ASR model. The ASR results are concatenated, and special tokens are removed. No language prompt is added during decoding. For emotional context, 😊 denotes HAPPY, 😡 denotes ANGRY, and 😔 denotes SAD.
-			For audioevent, 🎼 denotes music, 😀 denotes laugh and 👏 denotes applause. Additional, for Sensevoice-Large, 🎵 and 🎶 stands for the begin and the end of the background music, and <font style="color: red">red font</font> stands for lyric (text without <|Speech|>).
-		</p>
 </div>
+
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="SenseVoice-demo" style="text-align: center;">Rich Q&A with LLM</h2>
+	<p> Rich transcription can provide more information for the LLM, as a result, the LLM can better analyze the ASR result and answer the user's question.</p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">Wav</th>
+				<th style="text-align: center">Rich Transcription</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/rich-asr/英文-中文-腾格尔-天堂.wav" autoplay/>Your browser does not support the audio element.</audio><br></td>
+						<td style="vertical-align : middle;text-align:center;">Tangree with his song, Heaven. 🎼 <font style="color: red">啊。</font>🎵 Absolutely shocked but in a great way. That was awesome, 🎶 that was awesome 😊 what way to open a song, that was awesome, awesome, I'd love to check out some more Mongolian throat singing stuff, that is correct right, it is Mongolian. Let me know I'd love to check out more I think a lot of you want to check out the Who if you guys still want me to I'd be more than happy to. 🎼  <font style="color: red">蓝蓝的天空，清清的湖水啊，绿绿的草原</font>。That is incredible that is incredible for those of you who don't know what I'm saying right now the way he can make it sound like he's finished a note you know he like lowers it so low you can't even hear the note anymore and then he brings it back and you can see his mouth still open the way it makes the way he can like finish a note but not finish it . 😡 I don't know how to explain that that is an incredible talent that is amazing. 😊 <font style="color: red">🎼这是我的家， 哎。</font>😊👏</td>
+					</tr>					
+				</tbody>
+			</table>
+
+			<table class="table table-hover pt-2">
+				<thead>
+					<tr>
+					<th style="text-align: center"></th>
+					<th style="text-align: center">Q&A with Chinese</th>
+					</tr>
+					</thead>
+				<tbody>
+					<tr>
+						<td> 用户 </td>
+						<td style="vertical-align : middle;">
+							这是一段语音识别的转写结果，请帮我分析这段的录音
+						</td>
+					</tr>
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							这段录音内容是对一段音乐表演，特别是蒙古族喉唱（Mongolian throat singing）的热烈反响和评价。以下是对录音内容的详细分析：
+							<ul> 
+								<li>
+								开场提及的歌曲与艺术家: 开始时，说话者表达了对某位艺术家（可能是Tangree）和他的歌曲《天堂》的强烈共鸣，使用了"Absolutely shocked but in a great way"来形容初次听感，显示出这种音乐给他带来了极大的惊喜和正面冲击。这里使用了😊表情，显示出说话者对于歌曲开场的极度满意。
+								</li>
+								<li>
+									歌曲的背景音乐: 紧接着，说话者提到了歌曲的背景音乐，并强调了这首歌曲的独特风格，并表示这是蒙语 throat singing的特色。
+								</li>
+								<li>
+									描述蒙古喉唱的独特技巧: 说话者尝试解释蒙古喉唱中一种令人难以置信的技巧，即歌手能将音调降至极低，几乎听不见，然后再将其带回，同时保持口型不变，创造出一种音符似乎结束又未完全结束的效果。他对这种独特技艺表示惊叹，称之为“incredible talent”。
+								</li>
+								<li>
+									引用歌词及情感表达: 之后，录音中直接转录了一段中文歌词，“蓝蓝的天空，清清的湖水啊，绿绿的草原”，这可能是在描述蒙古自然风光，体现了歌曲中蕴含的美景与情感，说话者用“incredible”形容这种技巧，特别是歌手如何在音符结束时降低音调至几乎听不见，再将其带回，这种能力让他感到难以置信且兴奋（😡，在这里可能更准确地表达为赞叹或激动而非生气），再次强调了歌手的非凡才能。
+								</li>
+								<li>
+									个人情感的触动: 最后，可能“这是我的家，哎”这部分歌词触动了他的个人情感，配以鼓掌（👏），表达了深深的认同和喜爱。
+								</li>
+							</ul>
+								综上所述，这段录音不仅展现了说话者对蒙古喉唱艺术的深深着迷和高度评价，还体现了音乐跨越文化和语言界限、触动人心的力量。
+						</td>
+					</tr>
+					<tr>
+						<td> 用户 </td>
+						<td style="vertical-align : middle;">
+							帮我把歌词部分截取出来
+						</td>
+					</tr>
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							歌词部分如下
+							<ul> 
+								<li>
+									蓝蓝的天空，清清的湖水啊，绿绿的草原。
+								</li>								
+								<li>
+									这是我的家， 哎。
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td> 用户 </td>
+						<td style="vertical-align : middle;">
+							总结观众对音乐的评价和态度
+						</td>
+					</tr>	
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							从转写结果来看，观众对Tangree的表演和蒙古喉唱技巧表示了非常高的评价，并且提到了观众感到非常震撼和兴奋，并且在表演结束后得到了掌声（👏）回应。这些都表明观众对这次表演感到非常满意和高兴，因此可以推测观众的态度是积极和乐观的。
+						</td>
+					</tr>										
+				</tbody>
+			</table>
+
+			<table class="table table-hover pt-2">
+				<thead>
+					<tr>
+					<th style="text-align: center"></th>
+					<th style="text-align: center">Q&A with English</th>
+					</tr>
+					</thead>
+				<tbody>
+					<tr>
+						<td> User </td>
+						<td style="vertical-align : middle;">
+							Please analysis this ASR result from an audio.
+						</td>
+					</tr>
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							The ASR (Automatic Speech Recognition) result provided seems to be a commentary or reaction to a performance by someone named Tangree, featuring his song "Heaven," which incorporates Mongolian throat singing. Below is an analysis breaking down the key points and emotions conveyed:
+							<ul> 
+								<li>
+									Initial Reaction to the Song: The commentator expresses being "absolutely shocked but in a great way" indicating a strong positive surprise. They use the word "awesome" repeatedly, emphasizing their admiration for the opening of the song and the performance technique. This part of the response is marked with a happy tone (😊).
+								</li>
+								<li>
+									Interest in Mongolian Throat Singing: The speaker explicitly states their interest in exploring more Mongolian throat singing, confirming the genre they're hearing. They seem enthusiastic about recommending this type of music to others, suggesting a willingness to share and learn more (👏)
+								</li>
+								<li>
+									Description of Performance Technique: When the speaker mentions "the way he can make it sound like he's finished a note...lowers it so low you can't even hear the note anymore and then he brings it back," they are highlighting a specific technique in Mongolian throat singing, possibly referring to the manipulation of overtones or the use of deep, resonant sounds. They find this talent "incredible" and "amazing," expressing excitement (😡) and awe.
+								</li>
+								<li>
+									Cultural Appreciation: The lyrics transcribed in Chinese characters (🎵 蓝蓝的天空，清清的湖水啊，绿绿的草原.), translate to "Blue skies, clear lake waters, green grasslands." This segment reflects a celebration of nature, typical of traditional Mongolian themes in music. The commentator continues to express amazement (😊) at the performance, reinforcing their appreciation for the cultural and artistic expression.
+								</li>
+								<li>
+									Personal Connection and Praise: The final line, 这是我的家， 哎. 😊👏 translates to "This is my home, ah." It suggests a sense of belonging or personal connection the commentator might feel with the music or the sentiment expressed in the song. The use of "ah" could indicate a sigh of contentment or nostalgia, followed by a happy emoji and applause, further emphasizing their positive emotional response and approval.
+								</li>
+							</ul>
+							Overall, the ASR result captures a deeply appreciative and emotionally charged reaction to a unique and culturally rich musical performance, showcasing admiration for the performer's skill and the genre of Mongolian throat singing.
+						</td>
+					</tr>
+					<tr>
+						<td> User </td>
+						<td style="vertical-align : middle;">
+							Show me the lyrics 
+						</td>
+					</tr>
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							Based on the segments provided within your ASR result, here's a compilation of the lyrics mentioned or transcribed:
+							<ul> 
+								<li>
+									蓝蓝的天空，清清的湖水啊，绿绿的草原。
+								</li>								
+								<li>
+									这是我的家， 哎。
+								</li>
+							</ul>
+							English Translation:
+							<ul> 
+								<li>
+									Blue skies, clear lake waters, oh green grasslands.
+								</li>								
+								<li>
+									This is my home, ah.
+								</li>
+							</ul>
+							Please note that these lyrics are fragmented and represent only parts of the song "Heaven" by Tangree as captured in your ASR output. The full lyrics may contain more verses and choruses that were not included in your provided transcription. If you're looking for the complete lyrics, you might want to search directly online or refer to the official release of the song for the full text.							
+						</td>
+					</tr>
+					<tr>
+						<td> User </td>
+						<td style="vertical-align : middle;">
+							Please summary how does the listener think about this song.
+						</td>
+					</tr>	
+					<tr>
+						<td> LLM </td>
+						<td style="vertical-align : middle;">
+							The listener is thoroughly impressed and delighted by the song "Heaven" performed by Tangree. They find the use of Mongolian throat singing surprising and awesome, particularly praising the singer's ability to manipulate notes in a unique and skillful manner. The song evokes strong positive emotions, prompting the listener to express happiness, excitement, and a desire to explore more of this music genre. They also form an emotional connection with the lyrics, which celebrate nature and the sense of home. Overall, the song leaves a profound impact, combining artistic appreciation, cultural intrigue, and emotional resonance.
+						</td>
+					</tr>										
+				</tbody>
+			</table>
+
+		</div>
+</div>
+
 
 
 
@@ -983,57 +1181,93 @@
 </div>
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="App-agentic" style="text-align: center;">Interactive Broadcast</h2>
-	<p>By integrating SenseVoice, internet-retrieved LLMs and CosyVoice, we can build an interactive broadcast.</p>
-	<div class="table-responsive pt-3">
-		<table class="table table-hover pt-2">
+	<h2 id="App-E-chat" style="text-align: center;">Emotional Voice Chat</h2>
+	<p>By integrating SenseVoice, LLMs and CosyVoice, we can build a Emotional VoiceChat application. (In the following example, both the User and Assistant content are synthesized by CosyVoice.) </p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
 			<thead>
 			<tr>
-				<th style="vertical-align : middle;text-align: center">Transcription </th>
 				<th style="vertical-align : middle;text-align: center">Audio </th>
 			</tr>
 			</thead>
 			<tbody>
 			<tr>
-				<td style="vertical-align : middle;text-align: left">
-					<p style="color: darkred">主播小夏：聆听未来AI主播带你走在知识前沿。大家好，欢迎来到我们的播客节目，我是主播小夏。<br></p>
-					<p style="color: royalblue">主播大东：Hello, 大家好，我是你们的搞笑担当大东。今天我们要聊的话题非常劲爆，那就是五月天演唱会假唱风波。<br></p>
-					<p style="color: darkred">主播小夏： 是啊，最近这个话题可是引发了不小的争议。首先我们来看看网友爆料的一些证据和分析。有网友上传了五月天演唱会上的一些视频片段，从这些视频中可以看出，主唱阿信在演唱时明显是在对口型，甚至有些地方的口型都不太对。<br></p>
-					<p style="color: royalblue">主播大东：哈哈，我看了那个视频确实有点尴尬，我还记得有个镜头是阿信把麦克风放下来。<br></p>
-					<p>用户: 但这也太没有职业道德了吧，他。<br></p>
-					<p style="color: royalblue">主播大东：职业道德这个问题确实值得讨论。五月天一直以来都是以现场实力著称，乐队如果真有假唱，那粉丝们可能会感到失望，但也有时候考虑到音乐质量或者艺人身体状况，可能会采取一些措施，不过粉丝们通常更喜欢看到真实的现场表演，不是吗？你觉得呢？<br></p>
-					<p>用户: 没什么意思，换一个。<br></p>
-					<p style="color: royalblue">主播大东：接下来我们转入下一个话题，即将讨论的内容非常热门，那就是泰国队在36强赛对阵中国的海报，真是让人充满期待又感到紧张。<br></p>
-					<p style="color: darkred">主播小夏：没错，我看到那海报的时候内心五味杂陈。我们国足上一次大比分失利于泰国队，那1至5的比分简直是噩梦。不过这次泰国队用这个当宣传，我觉得咱们国足的小伙子们可得打起精神来，不能再让历史重演了。<br></p>
-					<p style="color: royalblue">主播大东：对，这个海报上还贴出了2013年的热身赛和2019年中国杯赛事中泰国队战胜国足的情况，泰国队可真不客气。</p>
+			  <td style="vertical-align : middle;text-align:center;">
+			  	<p> <strong>TODO</strong> </p>
+			  	<audio controls="controls" style="width: 480px;"><source src="audios/app/broadcaster.wav" autoplay/>Your browser does not support the audio element.</audio>
+			  </td>
+			</tr>
+			</tbody>
+			<thead>
+			<tr>
+				<th style="vertical-align : middle;text-align: center">Chat Transcription </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td style="vertical-align : middle;text-align: left; padding: 5px;">
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 早上好<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: warm tone, slow speaking rate, and friendly emotion.<br>播报内容: 早上好呀，今天的精神状态如何呀？<br></p>
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: <|HAPPY|>今天特别开心<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: high pitch, fast speaking rate, and happy emotion.<br>播报内容: [breath]哎哟，听到你这么开心我也很高兴呢！发生什么好事啦？<br></p>
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 我们要发布一个新的语音大模型啦<|Laughter|><br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: normal tone, medium speaking rate, with a hint of amusement.<br>播报内容: 哈哈，[laughter]太棒了！听说你们要发布新的语音大模型，真是个令人兴奋的消息啊！<br></p>
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 悲伤的说一句光头强台词吧<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: low pitch, slow speaking rate, and sad emotion.<br>播报内容: "唉...看来这次又得空手而归了..."<br></p>
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 真棒<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: positive tone, moderate speaking rate, and encouraging emotion.<br>播报内容: 那真是太棒啦！继续保持这种势头哦！<br></p>
+				</div>
 				</td>
-					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 380px;"><source src="audios/app/broadcaster.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+			</tr>
+			</tbody>
+		</table>
+		</div>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="App-agentic" style="text-align: center;">Interactive Broadcast</h2>
+	<p>By integrating SenseVoice, Multi-agent system with real-time world knowledge and CosyVoice, we can build an interactive broadcast.</p>
+	<div class="table-responsive pt-3">
+		<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
+			<thead>
+			<tr>
+				<th style="vertical-align : middle;text-align: center">Audio </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			  <td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 480px;"><source src="audios/app/broadcaster.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+			</tr>
+			</tbody>
+			<thead>
+			<tr>
+				<th style="vertical-align : middle;text-align: center">Chat Transcription </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td style="vertical-align : middle;text-align: left; padding: 5px;">
+					<div style="background-color: #d9edf7;">
+					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_小夏</strong>： 聆听未来AI主播带你走在知识前沿。大家好，欢迎来到我们的播客节目，我是主播小夏。<br></p>
+					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_大东</strong>： Hello, 大家好，我是你们的搞笑担当大东。今天我们要聊的话题非常劲爆，那就是五月天演唱会假唱风波。<br></p>
+					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_小夏</strong>： 是啊，最近这个话题可是引发了不小的争议。首先我们来看看网友爆料的一些证据和分析。有网友上传了五月天演唱会上的一些视频片段，从这些视频中可以看出，主唱阿信在演唱时明显是在对口型，甚至有些地方的口型都不太对。<br></p>
+					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_大东</strong>： 哈哈，我看了那个视频确实有点尴尬，我还记得有个镜头是阿信把麦克风放下来。<br></p>
+				  </div>
+					<p style="background-color: #fbf2d1; margin: 5px;"><strong>User</strong>: 但这也太没有职业道德了吧，他。<br></p>
+					<p style="text-align: left; color: #000; background-color: #d9edf7; margin: 2px; padding-left: 400px;"><strong>Assistant_大东</strong>： 职业道德这个问题确实值得讨论。五月天一直以来都是以现场实力著称，乐队如果真有假唱，那粉丝们可能会感到失望，但也有时候考虑到音乐质量或者艺人身体状况，可能会采取一些措施，不过粉丝们通常更喜欢看到真实的现场表演，不是吗？你觉得呢？<br></p>
+					<p style="background-color: #fbf2d1; margin: 5px;"><strong>User</strong>: 没什么意思，换一个。<br></p>
+					<div style="background-color: #d9edf7; margin: 2px;">
+					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_大东</strong>： 接下来我们转入下一个话题，即将讨论的内容非常热门，那就是泰国队在36强赛对阵中国的海报，真是让人充满期待又感到紧张。<br></p>
+					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_小夏</strong>： 没错，我看到那海报的时候内心五味杂陈。我们国足上一次大比分失利于泰国队，那1至5的比分简直是噩梦。不过这次泰国队用这个当宣传，我觉得咱们国足的小伙子们可得打起精神来，不能再让历史重演了。<br></p>
+					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_大东</strong>： 对，这个海报上还贴出了2013年的热身赛和2019年中国杯赛事中泰国队战胜国足的情况，泰国队可真不客气。</p>
+				</div>
+				</td>
 			</tr>
 			</tbody>
 		</table>
 	</div>
 </div>
 
-<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="App-VoiceChat" style="text-align: center;">Versatile Voice Chat</h2>
-	<p>By integrating SenseVoice, LLMs and CosyVoice, we can build a versatile VoiceChat application.</p>
-		<div class="table-responsive pt-3">
-			<table class="table table-hover pt-2">
-				<thead>
-				<tr>
-					<th style="vertical-align : middle;text-align: center">Conversation </th>
-					<th style="vertical-align : middle;text-align: center">Audio </th>
-				</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/prompt/4245145269330795065.wav" autoplay/>Your browser does not support the audio element.</audio><br>顿时，气氛变得沉郁起来。乍看之下，一切的困扰仿佛都围绕在我身边。我皱着眉头，感受着那份压力，但我知道我不能放弃，不能认输。于是，我深吸一口气，心底的声音告诉我：“无论如何，都要冷静下来，重新开始。”</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/zeroshot_generation/EN/generated/-7098819224143199853.wav" autoplay/>Your browser does not support the audio element.</audio><br>I don't really care what you call me. I've been a silent spectator, watching species evolve, empires rise and fall. But always remember, I am mighty and enduring. Respect me and I'll nurture you; ignore me and you shall face the consequences.</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-</div>
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 style="text-align: center;">Disclaimer</h2>

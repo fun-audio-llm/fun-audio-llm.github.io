@@ -32,8 +32,6 @@
 		[<a href="">Code</a>]
 		[<a href="">HuggingFace</a>]
 		[<a href="">ModelScope</a>]
-		<!-- [<a href="https://arxiv.org/abs/2303.03926">Paper</a>] -->
-		<!-- [<a href="https://arxiv.org/abs/2306.02982">Paper</a>] -->
 
         <p class="fst-italic mb-0">
 			<br>
@@ -42,11 +40,20 @@
         </p>
         <p><b>Tongyi Speech Lab, Alibaba Group</b></p>
 	</div>
-	<p><b>Abstract.</b>
-		We introduce FunAudioLLM, ....
-		<li> We have open-sourced SenseVoice, an audio understanding large model capable of high-precision multilingual speech recognition, emotion recognition, and audio event detection. SenseVoice-small supports multilingual recognition in Chinese, English, Cantonese, Japanese, and Korean. SenseVoice-large, like Whisper-large, supports speech recognition in over 50 languages and has a significant advantage in recognition for Chinese and Cantonese. </li>
-		<li> SenseVoice-small employs a non-autoregressive end-to-end architecture, resulting in extremely low inference latency—7 times faster compared to Whisper-small and 17 times faster compared to Whisper-large. Additionally, SenseVoice boasts state-of-the-art emotion recognition capabilities, making it suitable for building low-latency, human-like voice interaction systems. </li>
-		<li> By integrating SenseVoice, CosyVoice, and LLM like Qwen, we have developed a suite of rich application demos, including: 1) End-to-End Speech Translation: Speak in foreign languages using your own voice; 2) Emotional Voice Chat: Allow the model to understand your emotions for more human-like voice interactions; 3) Interactive Podcast: Engage in live discussions with multiple large models as part of a podcast broadcast; 4) Rich-QA: Get the model to analyze and summarize your audio content through interactive questioning; 5) AudioBook: Enable the model to perform expressive, multi-character narration for your audiobooks. </li>
+	<p><b>Abstract:</b>
+<!--		We introduce FunAudioLLM, ....-->
+		This report introduces <b>FunAudioLLM</b>, a framework designed to enhance natural voice interactions between humans and large language models (LLMs). At its core are two innovative models: <b>SenseVoice</b> for high-precision multilingual speech recognition, emotion recognition, and audio event detection; and <b>CosyVoice</b> for natural speech generation with multi-language, timbre, and emotion control. SenseVoice delivers exceptionally low latency and supports over 50 languages, while CosyVoice excels in multi-lingual voice generation, zero-shot voice generation, cross-lingual voice cloning, and instruction-following capabilities. The models related to SenseVoice and CosyVoice have been open-sourced on Modelscope and Huggingface, along with the corresponding training, inference, and fine-tuning codes released on GitHub. By integrating these models with LLMs, FunAudioLLM enables applications such as speech translation, emotional voice chat, interactive podcasts, rich Q&A, and expressive audiobook narration, thereby pushing the boundaries of voice interaction technology.
+	<p style="text-align: center;">
+		<img src="pics/highlight.png" height="400" width="1024">
+	</p>
+<!--
+		<li> SenseVoice supports high-precision multilingual ASR, excels over Whisper in Chinese and Cantonese recognition, and has SOTA emotion recognition capabilities. </li>
+		<li> SenseVoice-small has extremely high inference efficiency, being 7 times faster than Whisper-small and 17 times faster than Whisper-large. </li>
+		<li> The CosyVoice model, pre-trained on 150,000+ hours of meticulous multi-lingual, multi-speaker data, pioneers as the first industry-grade, open-source speech synthesis tool. </li>
+		<li> CosyVoice offers multi-language support for English, Mandarin, Japanese, Korean, and Cantonese, enabling zero-shot voice generation, and includes seven speakers fine-tuned for immediate use. </li>
+		<li> CosyVoice-instruct also offers emotional expression, event control, and detailed adjustments like speed and pitch, and it ensures versatile and nuanced speech generation.</li>
+		<li> FunAudioLLM has developed a variety of application demos, including simultaneous interpretation, emotional voice interaction, interactive podcasts, and multi-character audiobook narration.</li>
+-->
 </p>
 	</p>
 
@@ -76,10 +83,10 @@
         <li><a href="#SenseVoice-overview">Voice Understanding Model: SenseVoice</a>
 			<ul>
 				<li><a href="#SenseVoice-overview">Overview</a></li>
-				<li><a href="#SenseVoice-ASR"> Multilingaul Speech Recognition</a></li>
+				<li><a href="#SenseVoice-ASR"> Multilingual Speech Recognition</a></li>
 				<li><a href="#SenseVoice-emotion">Speech Emotion Recognition</a></li>
 				<li><a href="#SenseVoice-AED">Audio Events Classification</a></li>
-				<li><a href="#SenseVoice-demo">Rich Transcribe Demo Samples</a></li>
+				<li><a href="#SenseVoice-RichDemo">Rich Transcribe Demo Samples</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -509,7 +516,7 @@
 	<h2 id="SenseVoice-overview" style="text-align: center;">Overview of SenseVoice</h2>
 	<body>
 	<p style="text-align: center;">
-		<img src="pics/overview-sensevoice.png" height="400" width="1024">
+		<img src="pics/overview-sensevoice.png" height="400" width="800">
 	</body>
 		<p style="text-align: center;" >
 			<b>Figure 2.</b> An overview of the SenseVoice Models. SenseVoice is a speech foundation model with multiple speech understanding capabilities, including ASR, LID, SER, and AED. SenseVoice-Small, an encoder-only speech foundation model for fast speech understanding, and SenseVoice-Large, an encoder-decoder speech foundation model for more accurate speech understanding with more languages supported.
@@ -862,7 +869,7 @@
 
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="SenseVoice-demo" style="text-align: center;">Rich Transcribe Demo Samples</h2>
+	<h2 id="SenseVoice-RichDemo" style="text-align: center;">Rich Transcribe Demo Samples</h2>
 		<p>*Note: Audio examples are segmented into 15-second chunks without using Voice Activity Detection (VAD) and then processed by the ASR model. The ASR results are concatenated, and special tokens are removed. No language prompt is added during decoding. For emotional context, 😊 denotes HAPPY, 😡 denotes ANGRY, and 😔 denotes SAD.
 			For audioevent, 🎼 denotes music, 😀 denotes laugh and 👏 denotes applause. Additional, for Sensevoice-Large, 🎵 and 🎶 stands for the begin and the end of the background music, and <font style="color: red">red font</font> stands for lyric (text without <|Speech|>).
 		</p>
@@ -961,7 +968,7 @@
 				</tbody>
 			</table>
 
-			<table class="table table-hover pt-2">
+			<!-- <table class="table table-hover pt-2">
 				<thead>
 					<tr>
 					<th style="text-align: center"></th>
@@ -1032,7 +1039,7 @@
 						</td>
 					</tr>										
 				</tbody>
-			</table>
+			</table> -->
 
 			<table class="table table-hover pt-2">
 				<thead>
@@ -1194,8 +1201,7 @@
 			<tbody>
 			<tr>
 			  <td style="vertical-align : middle;text-align:center;">
-			  	<p> <strong>TODO</strong> </p>
-			  	<audio controls="controls" style="width: 480px;"><source src="audios/app/broadcaster.wav" autoplay/>Your browser does not support the audio element.</audio>
+			  	<audio controls="controls" style="width: 480px;"><source src="audios/app/Emotional_Voice_Chat.wav" autoplay/>Your browser does not support the audio element.</audio>
 			  </td>
 			</tr>
 			</tbody>
@@ -1210,14 +1216,13 @@
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 早上好<br></p>
 					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: warm tone, slow speaking rate, and friendly emotion.<br>播报内容: 早上好呀，今天的精神状态如何呀？<br></p>
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: <|HAPPY|>今天特别开心<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: high pitch, fast speaking rate, and happy emotion.<br>播报内容: [breath]哎哟，听到你这么开心我也很高兴呢！发生什么好事啦？<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: high pitch, fast speaking rate, and happy emotion.<br>播报内容: [breath]哎哟，听到你这么开心[breath]我也很高兴呢，发生什么好事啦？<br></p>
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 我们要发布一个新的语音大模型啦<|Laughter|><br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: normal tone, medium speaking rate, with a hint of amusement.<br>播报内容: 哈哈，[laughter]太棒了！听说你们要发布新的语音大模型，真是个令人兴奋的消息啊！<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: normal tone, medium speaking rate, with a hint of amusement.<br>播报内容: [laughter]太棒了，听说你们要发布新的语音大模型，真是个令人兴奋的消息啊！<br></p>
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 悲伤的说一句光头强台词吧<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: low pitch, slow speaking rate, and sad emotion.<br>播报内容: "唉...看来这次又得空手而归了..."<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: low pitch, slow speaking rate, and sad emotion.<br>播报内容: "唉---看来这次又要空手而归了---"<br></p>
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 真棒<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: positive tone, moderate speaking rate, and encouraging emotion.<br>播报内容: 那真是太棒啦！继续保持这种势头哦！<br></p>
-				</div>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: positive tone, moderate speaking rate, and encouraging emotion.<br>播报内容: 那真是太棒啦，继续保持这种势头哦！<br></p>
 				</td>
 			</tr>
 			</tbody>

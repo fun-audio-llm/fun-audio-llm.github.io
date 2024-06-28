@@ -42,7 +42,7 @@
 	</div>
 	<p><b>Abstract:</b>
 <!--		We introduce FunAudioLLM, ....-->
-		This report introduces <b>FunAudioLLM</b>, a framework designed to enhance natural voice interactions between humans and large language models (LLMs). At its core are two innovative models: <b>SenseVoice</b> for high-precision multilingual speech recognition, emotion recognition, and audio event detection; and <b>CosyVoice</b> for natural speech generation with multi-language, timbre, and emotion control. SenseVoice delivers exceptionally low latency and supports over 50 languages, while CosyVoice excels in multi-lingual voice generation, zero-shot voice generation, cross-lingual voice cloning, and instruction-following capabilities. The models related to SenseVoice and CosyVoice have been open-sourced on Modelscope and Huggingface, along with the corresponding training, inference, and fine-tuning codes released on GitHub. By integrating these models with LLMs, FunAudioLLM enables applications such as speech translation, emotional voice chat, interactive podcasts, rich Q&A, and expressive audiobook narration, thereby pushing the boundaries of voice interaction technology.
+		This report introduces <b>FunAudioLLM</b>, a framework designed to enhance natural voice interactions between humans and large language models (LLMs). At its core are two innovative models: <b>SenseVoice</b> for high-precision multilingual speech recognition, emotion recognition, and audio event detection; and <b>CosyVoice</b> for natural speech generation with multi-language, timbre, and emotion control. SenseVoice delivers exceptionally low latency and supports over 50 languages, while CosyVoice excels in multi-lingual voice generation, zero-shot voice generation, cross-lingual voice cloning, and instruction-following capabilities. The models related to SenseVoice and CosyVoice have been open-sourced on Modelscope and Huggingface, along with the corresponding training, inference, and fine-tuning codes released on GitHub. By integrating these models with LLMs, FunAudioLLM enables applications such as speech translation, emotional voice chat, interactive podcasts, and expressive audiobook narration, thereby pushing the boundaries of voice interaction technology.
 	<p style="text-align: center;">
 		<img src="pics/highlight.png" height="400" width="1024">
 	</p>
@@ -65,13 +65,12 @@
 				<li><a href="#App-S2ST">Speech-to-Speech Translation</a></li>
 				<li><a href="#App-E-chat">Emotional VoiceChat</a></li>
 				<li><a href="#App-agentic">Interactive BroadCast</a></li>
-				<li><a href="#App-QA">Rich QA</a></li>
-				<li><a href="#App-audiobook">AudioBook</a></li>
+				<li><a href="#App-audiobook">Expressive Audiobook </a></li>
 			</ul>
 		  </li>
         <li><a href="#CosyVoice-overview">Voice Generation Model: CosyVoice</a>
 			<ul>
-				<li><a href="#CosyVoice-overview">Overview</a></li>
+				<li><a href="#CosyVoice-overview">Overview of Overview</a></li>
 				<li><a href="#CosyVoice-basic">Multi-lingual Voice Generation</a></li>
 				<li><a href="#CosyVoice-zeroshot">Zero-shot In-context Generation</a></li>
 				<li><a href="#CosyVoice-instructed">Instructed Voice Generation</a></li>
@@ -82,10 +81,10 @@
 		</li>
         <li><a href="#SenseVoice-overview">Voice Understanding Model: SenseVoice</a>
 			<ul>
-				<li><a href="#SenseVoice-overview">Overview</a></li>
+				<li><a href="#SenseVoice-overview">Overview of SenseVoice </a></li>
 				<li><a href="#SenseVoice-ASR"> Multilingual Speech Recognition</a></li>
 				<li><a href="#SenseVoice-emotion">Speech Emotion Recognition</a></li>
-				<li><a href="#SenseVoice-AED">Audio Events Classification</a></li>
+				<li><a href="#SenseVoice-AED">Audio Event Detection</a></li>
 				<li><a href="#SenseVoice-demo">Rich Transcribe Demo Samples</a></li>
 			</ul>
 		</li>
@@ -93,6 +92,178 @@
 
 </div>
 
+<!------ Application -------------------------->
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="App-S2ST" style="text-align: center;">Speech-to-Speech Translation</h2>
+	<p>By integrating LLMs and CosyVoice, we can easily perform speech-to-speech translation (S2ST).
+		Note that the original recordings are bolded.
+	</p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+					<th style="vertical-align : middle;text-align: center">ZH </th>
+					<th style="vertical-align : middle;text-align: center">EN </th>
+					<th style="vertical-align : middle;text-align: center">JP </th>
+					<th style="vertical-align : middle;text-align: center">Yue </th>
+					<th style="vertical-align : middle;text-align: center">KO </th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|zh|>对，所以说你现在的话，这个账单的话，你既然说能处理，那你就想办法处理掉。</b></td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_en.wav" autoplay/>Your browser does not support the audio element.</audio><br><|en|>Yes, that's why I'm saying, regarding the bill you're currently discussing, if you say you can handle it, then find a way to take care of it. </td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_jp.wav" autoplay/>Your browser does not support the audio element.</audio><br><|jp|>そう、だから今あなたが言っていること、この請求書について、あなたが処理できると言ったのなら、何とかして処理してください。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_yue.wav" autoplay/>Your browser does not support the audio element.</audio><br><|yue|>对，所以话你而家讲嘅，呢张账单嘅话，你既然话得掂，噉你就要想办法搞掂佢。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_ko.wav" autoplay/>Your browser does not support the audio element.</audio><br><|ko|>맞아, 그래서 네가 지금 말하는 것, 이 계산서에 대해서, 네가 처리할 수 있다고 했다면, 그렇다면 방법을 찾아서 처리해야 해.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_zh.wav" autoplay/>Your browser does not support the audio element.</audio><br><|zh|>在那之后，完全收购那家公司。因此，保持管理层的一致性，利益与即将加入家族的资产保持一致，这就是我们有时不买下全部的原因。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|en|>And then later on, fully acquiring that company. So keeping management in line, interest in line with the asset that's coming into the family is a reason why sometimes we don't buy the whole thing.</b></td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_jp.wav" autoplay/>Your browser does not support the audio element.</audio><br><|jp|>その後、その会社を完全に買収する。だから、経営陣を一列に並べ、家族に入る資産との利益を一致させることが、私たちが全てを買わない理由の一つです。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_yue.wav" autoplay/>Your browser does not support the audio element.</audio><br><|yue|>之后，就完全收购咗嗰间公司。所以，保持管理层同兴趣与即将加入家族嘅资产保持一致，系我们有时唔买晒全部嘅原因。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_ko.wav" autoplay/>Your browser does not support the audio element.</audio><br><|ko|>그리고 나중에, 그 회사를 완전히 인수하게 됩니다. 그래서 경영진을 일치시키고, 가족에 들어오는 자산과의 이익을 일치시키는 것이 우리가 가끔 전부를 사지 않는 이유입니다.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_zh.wav" autoplay/>Your browser does not support the audio element.</audio><br><|zh|>只是雨滴有什么麻烦的？这还没有打雷呢！</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_en.wav" autoplay/>Your browser does not support the audio element.</audio><br><|en|>Rainfall alone does not constitute a storm. Thunder is required.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|jp|>雨なんて大したことありません。まだ雷も鳴っていないのですから。</b></td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_yue.wav" autoplay/>Your browser does not support the audio element.</audio><br><|yue|>只系雨滴有咩麻烦嘅？连打雷都未有呢！</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_ko.wav" autoplay/>Your browser does not support the audio element.</audio><br><|ko|>고작 빗방울로 호들갑은, 아직 번개도 치지 않았는데.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_zh.wav" autoplay/>Your browser does not support the audio element.</audio><br><|zh|>早点回家吧，到家了如果可以的话给我回个信息。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_en.wav" autoplay/>Your browser does not support the audio element.</audio><br><|en|>Come home early, and if possible, let me know when you're back.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_jp.wav" autoplay/>Your browser does not support the audio element.</audio><br><|jp|>早く家に帰って、家に着いたら可能なら私にメッセージを返してください。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|yue|>早啲翻屋企吧，到屋企可以嘅话俾我回个信息。</b></td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_ko.wav" autoplay/>Your browser does not support the audio element.</audio><br><|ko|>일찍 집에 돌아오세요. 집에 도착하면 가능하다면 저에게 연락해 주세요.</td>
+					</tr>
+					<tr>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_zh.wav" autoplay/>Your browser does not support the audio element.</audio><br>虽然这种时候已经错过了云先生的戏，但夜晚的璃月仍有许多好去处。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_en.wav" autoplay/>Your browser does not support the audio element.</audio><br><|en|>By this time of night, we will have already missed Yun's play. But LeeYew is full of interesting places to explore, even at night.</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_jp.wav" autoplay/>Your browser does not support the audio element.</audio><br><|jp|>もう雲殿の芝居に間に合わないが、夜の璃月はまだまだいいところがたくさんあるぞ。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_yue.wav" autoplay/>Your browser does not support the audio element.</audio><br><|yue|>虽然呢个时候已经错过咗云先生嘅戏，但夜晚嘅璃月仲有好多好去处。</td>
+						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|ko|>운 선생의 경극을 놓쳤지만, 밤의 리월에는 가볼 만한 곳이 많아.</b></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="App-E-chat" style="text-align: center;">Emotional VoiceChat</h2>
+	<p>By integrating SenseVoice, LLMs and CosyVoice, we can build a Emotional VoiceChat application. (In the following example, both the User and Assistant content are synthesized by CosyVoice.) </p>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
+			<thead>
+			<tr>
+				<th style="vertical-align : middle;text-align: center">Audio </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			  <td style="vertical-align : middle;text-align:center;">
+			  	<audio controls="controls" style="width: 480px;"><source src="audios/app/Emotional_Voice_Chat.wav" autoplay/>Your browser does not support the audio element.</audio>
+			  </td>
+			</tr>
+			</tbody>
+			<thead>
+			<tr>
+				<th style="vertical-align : middle;text-align: center">Chat Transcription </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td style="vertical-align : middle;text-align: left; padding: 5px;">
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 早上好<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: warm tone, slow speaking rate, and friendly emotion.<br>播报内容: 早上好呀，今天的精神状态如何呀？<br></p>
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: <|HAPPY|>今天特别开心<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: high pitch, fast speaking rate, and happy emotion.<br>播报内容: [breath]哎哟，听到你这么开心[breath]我也很高兴呢，发生什么好事啦？<br></p>
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 我们要发布一个新的语音大模型啦<|Laughter|><br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: normal tone, medium speaking rate, with a hint of amusement.<br>播报内容: [laughter]太棒了，听说你们要发布新的语音大模型，真是个令人兴奋的消息啊！<br></p>
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 悲伤的说一句光头强台词吧<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: low pitch, slow speaking rate, and sad emotion.<br>播报内容: "唉---看来这次又要空手而归了---"<br></p>
+					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 真棒<br></p>
+					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: positive tone, moderate speaking rate, and encouraging emotion.<br>播报内容: 那真是太棒啦，继续保持这种势头哦！<br></p>
+				</div>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		</div>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="App-agentic" style="text-align: center;">Interactive Broadcast</h2>
+	<p>By integrating SenseVoice, Multi-agent system with real-time world knowledge and CosyVoice, we can build an interactive broadcast.</p>
+	<div class="table-responsive pt-3">
+		<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
+			<thead>
+			<tr>
+				<th style="vertical-align : middle;text-align: center">Audio </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			  <td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 480px;"><source src="audios/app/broadcaster.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+			</tr>
+			</tbody>
+			<thead>
+			<tr>
+				<th style="vertical-align : middle;text-align: center">Chat Transcription </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td style="vertical-align : middle;text-align: left; padding: 5px;">
+					<div style="background-color: #d9edf7;">
+					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_小夏</strong>： 聆听未来AI主播带你走在知识前沿。大家好，欢迎来到我们的播客节目，我是主播小夏。<br></p>
+					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_大东</strong>： Hello, 大家好，我是你们的搞笑担当大东。今天我们要聊的话题非常劲爆，那就是五月天演唱会假唱风波。<br></p>
+					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_小夏</strong>： 是啊，最近这个话题可是引发了不小的争议。首先我们来看看网友爆料的一些证据和分析。有网友上传了五月天演唱会上的一些视频片段，从这些视频中可以看出，主唱阿信在演唱时明显是在对口型，甚至有些地方的口型都不太对。<br></p>
+					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_大东</strong>： 哈哈，我看了那个视频确实有点尴尬，我还记得有个镜头是阿信把麦克风放下来。<br></p>
+				  </div>
+					<p style="background-color: #fbf2d1; margin: 5px;"><strong>User</strong>: 但这也太没有职业道德了吧，他。<br></p>
+					<p style="text-align: left; color: #000; background-color: #d9edf7; margin: 2px; padding-left: 400px;"><strong>Assistant_大东</strong>： 职业道德这个问题确实值得讨论。五月天一直以来都是以现场实力著称，乐队如果真有假唱，那粉丝们可能会感到失望，但也有时候考虑到音乐质量或者艺人身体状况，可能会采取一些措施，不过粉丝们通常更喜欢看到真实的现场表演，不是吗？你觉得呢？<br></p>
+					<p style="background-color: #fbf2d1; margin: 5px;"><strong>User</strong>: 没什么意思，换一个。<br></p>
+					<div style="background-color: #d9edf7; margin: 2px;">
+					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_大东</strong>： 接下来我们转入下一个话题，即将讨论的内容非常热门，那就是泰国队在36强赛对阵中国的海报，真是让人充满期待又感到紧张。<br></p>
+					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_小夏</strong>： 没错，我看到那海报的时候内心五味杂陈。我们国足上一次大比分失利于泰国队，那1至5的比分简直是噩梦。不过这次泰国队用这个当宣传，我觉得咱们国足的小伙子们可得打起精神来，不能再让历史重演了。<br></p>
+					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_大东</strong>： 对，这个海报上还贴出了2013年的热身赛和2019年中国杯赛事中泰国队战胜国足的情况，泰国队可真不客气。</p>
+				</div>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="App-audiobook" style="text-align: center;">Expressive Audiobook </h2>
+	<div class="table-responsive pt-3">
+		<table class="table table-hover pt-2">
+			<thead>
+			<tr>
+				<th style="vertical-align : middle;text-align: center">Text </th>
+				<th style="vertical-align : middle;text-align: center">Audio </th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td style="vertical-align : middle;text-align: left">神雕侠侣，第九回，百计避敌。<br>
+- 陆无双正自惶急，听他忽问傻话，怒道：“傻蛋！又胡说甚么？”<br>
+- 杨过笑道：“咱们来玩拜天地成亲，你扮新娘子好不好？那才叫美呢！脸上披了红布，别人说什么也瞧你不见。”<br>
+- 陆无双一怔，道：“你教我扮新娘子躲过师父？”<br>
+- 杨过嘻嘻笑道：“我不知道，你扮新娘子，我就扮新官人。”</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 380px;"><source src="audios/app/audiobook/ghy_eric_qiyue.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+
+<!------ CosyVoice -------------------------->
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="CosyVoice-overview" style="text-align: center;">Overview of CosyVoice</h2>
 	<body>
@@ -484,31 +655,6 @@
 	<p>* Due to copyright restrictions, we are unable to open source the SFT models, but we will release the SFT training script. You can use this script to perform SFT on your own data.</p>
 	<br>
 </div>
-
-<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="Demos" style="text-align: center;">Demo</h2>
-	<div class="table-responsive pt-3">
-		<table class="table table-hover pt-2">
-			<thead>
-			<tr>
-				<th style="vertical-align : middle;text-align: center">Text </th>
-				<th style="vertical-align : middle;text-align: center">Audio </th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
-				<td style="vertical-align : middle;text-align: left">神雕侠侣，第九回，百计避敌。<br>
-- 陆无双正自惶急，听他忽问傻话，怒道：“傻蛋！又胡说甚么？”<br>
-- 杨过笑道：“咱们来玩拜天地成亲，你扮新娘子好不好？那才叫美呢！脸上披了红布，别人说什么也瞧你不见。”<br>
-- 陆无双一怔，道：“你教我扮新娘子躲过师父？”<br>
-- 杨过嘻嘻笑道：“我不知道，你扮新娘子，我就扮新官人。”</td>
-					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 380px;"><source src="audios/app/audiobook/ghy_eric_qiyue.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-			</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
-
 
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
@@ -947,7 +1093,7 @@
 		</div>
 </div>
 
-
+<!--
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="SenseVoice-demo" style="text-align: center;">Rich Q&A with LLM</h2>
 	<p> Rich transcription can provide more information for the LLM, as a result, the LLM can better analyze the ASR result and answer the user's question.</p>
@@ -1038,7 +1184,7 @@
 						</td>
 					</tr>										
 				</tbody>
-			</table> -->
+			</table> 
 
 			<table class="table table-hover pt-2">
 				<thead>
@@ -1125,154 +1271,7 @@
 
 		</div>
 </div>
-
-
-
-
-
-<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="App-S2ST" style="text-align: center;">Speech-to-Speech Translation</h2>
-	<p>By integrating LLMs and CosyVoice, we can easily perform speech-to-speech translation (S2ST).
-		Note that the original recordings are bolded.
-	</p>
-		<div class="table-responsive pt-3">
-			<table class="table table-hover pt-2">
-				<thead>
-				<tr>
-					<th style="vertical-align : middle;text-align: center">ZH </th>
-					<th style="vertical-align : middle;text-align: center">EN </th>
-					<th style="vertical-align : middle;text-align: center">JP </th>
-					<th style="vertical-align : middle;text-align: center">Yue </th>
-					<th style="vertical-align : middle;text-align: center">KO </th>
-				</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|zh|>对，所以说你现在的话，这个账单的话，你既然说能处理，那你就想办法处理掉。</b></td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_en.wav" autoplay/>Your browser does not support the audio element.</audio><br><|en|>Yes, that's why I'm saying, regarding the bill you're currently discussing, if you say you can handle it, then find a way to take care of it. </td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_jp.wav" autoplay/>Your browser does not support the audio element.</audio><br><|jp|>そう、だから今あなたが言っていること、この請求書について、あなたが処理できると言ったのなら、何とかして処理してください。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_yue.wav" autoplay/>Your browser does not support the audio element.</audio><br><|yue|>对，所以话你而家讲嘅，呢张账单嘅话，你既然话得掂，噉你就要想办法搞掂佢。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/zh/zh_ko.wav" autoplay/>Your browser does not support the audio element.</audio><br><|ko|>맞아, 그래서 네가 지금 말하는 것, 이 계산서에 대해서, 네가 처리할 수 있다고 했다면, 그렇다면 방법을 찾아서 처리해야 해.</td>
-					</tr>
-					<tr>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_zh.wav" autoplay/>Your browser does not support the audio element.</audio><br><|zh|>在那之后，完全收购那家公司。因此，保持管理层的一致性，利益与即将加入家族的资产保持一致，这就是我们有时不买下全部的原因。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|en|>And then later on, fully acquiring that company. So keeping management in line, interest in line with the asset that's coming into the family is a reason why sometimes we don't buy the whole thing.</b></td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_jp.wav" autoplay/>Your browser does not support the audio element.</audio><br><|jp|>その後、その会社を完全に買収する。だから、経営陣を一列に並べ、家族に入る資産との利益を一致させることが、私たちが全てを買わない理由の一つです。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_yue.wav" autoplay/>Your browser does not support the audio element.</audio><br><|yue|>之后，就完全收购咗嗰间公司。所以，保持管理层同兴趣与即将加入家族嘅资产保持一致，系我们有时唔买晒全部嘅原因。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/en/en_ko.wav" autoplay/>Your browser does not support the audio element.</audio><br><|ko|>그리고 나중에, 그 회사를 완전히 인수하게 됩니다. 그래서 경영진을 일치시키고, 가족에 들어오는 자산과의 이익을 일치시키는 것이 우리가 가끔 전부를 사지 않는 이유입니다.</td>
-					</tr>
-					<tr>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_zh.wav" autoplay/>Your browser does not support the audio element.</audio><br><|zh|>只是雨滴有什么麻烦的？这还没有打雷呢！</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_en.wav" autoplay/>Your browser does not support the audio element.</audio><br><|en|>Rainfall alone does not constitute a storm. Thunder is required.</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|jp|>雨なんて大したことありません。まだ雷も鳴っていないのですから。</b></td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_yue.wav" autoplay/>Your browser does not support the audio element.</audio><br><|yue|>只系雨滴有咩麻烦嘅？连打雷都未有呢！</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/jp/jp_ko.wav" autoplay/>Your browser does not support the audio element.</audio><br><|ko|>고작 빗방울로 호들갑은, 아직 번개도 치지 않았는데.</td>
-					</tr>
-					<tr>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_zh.wav" autoplay/>Your browser does not support the audio element.</audio><br><|zh|>早点回家吧，到家了如果可以的话给我回个信息。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_en.wav" autoplay/>Your browser does not support the audio element.</audio><br><|en|>Come home early, and if possible, let me know when you're back.</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_jp.wav" autoplay/>Your browser does not support the audio element.</audio><br><|jp|>早く家に帰って、家に着いたら可能なら私にメッセージを返してください。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|yue|>早啲翻屋企吧，到屋企可以嘅话俾我回个信息。</b></td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/yue/yue_ko.wav" autoplay/>Your browser does not support the audio element.</audio><br><|ko|>일찍 집에 돌아오세요. 집에 도착하면 가능하다면 저에게 연락해 주세요.</td>
-					</tr>
-					<tr>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_zh.wav" autoplay/>Your browser does not support the audio element.</audio><br>虽然这种时候已经错过了云先生的戏，但夜晚的璃月仍有许多好去处。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_en.wav" autoplay/>Your browser does not support the audio element.</audio><br><|en|>By this time of night, we will have already missed Yun's play. But LeeYew is full of interesting places to explore, even at night.</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_jp.wav" autoplay/>Your browser does not support the audio element.</audio><br><|jp|>もう雲殿の芝居に間に合わないが、夜の璃月はまだまだいいところがたくさんあるぞ。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_yue.wav" autoplay/>Your browser does not support the audio element.</audio><br><|yue|>虽然呢个时候已经错过咗云先生嘅戏，但夜晚嘅璃月仲有好多好去处。</td>
-						<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/s2st/ko/ko_prompt.wav" autoplay/>Your browser does not support the audio element.</audio><br><b><|ko|>운 선생의 경극을 놓쳤지만, 밤의 리월에는 가볼 만한 곳이 많아.</b></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-</div>
-
-<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="App-E-chat" style="text-align: center;">Emotional Voice Chat</h2>
-	<p>By integrating SenseVoice, LLMs and CosyVoice, we can build a Emotional VoiceChat application. (In the following example, both the User and Assistant content are synthesized by CosyVoice.) </p>
-		<div class="table-responsive pt-3">
-			<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
-			<thead>
-			<tr>
-				<th style="vertical-align : middle;text-align: center">Audio </th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
-			  <td style="vertical-align : middle;text-align:center;">
-			  	<audio controls="controls" style="width: 480px;"><source src="audios/app/Emotional_Voice_Chat.wav" autoplay/>Your browser does not support the audio element.</audio>
-			  </td>
-			</tr>
-			</tbody>
-			<thead>
-			<tr>
-				<th style="vertical-align : middle;text-align: center">Chat Transcription </th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
-				<td style="vertical-align : middle;text-align: left; padding: 5px;">
-					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 早上好<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: warm tone, slow speaking rate, and friendly emotion.<br>播报内容: 早上好呀，今天的精神状态如何呀？<br></p>
-					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: <|HAPPY|>今天特别开心<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: high pitch, fast speaking rate, and happy emotion.<br>播报内容: [breath]哎哟，听到你这么开心[breath]我也很高兴呢，发生什么好事啦？<br></p>
-					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 我们要发布一个新的语音大模型啦<|Laughter|><br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: normal tone, medium speaking rate, with a hint of amusement.<br>播报内容: [laughter]太棒了，听说你们要发布新的语音大模型，真是个令人兴奋的消息啊！<br></p>
-					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 悲伤的说一句光头强台词吧<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: low pitch, slow speaking rate, and sad emotion.<br>播报内容: "唉---看来这次又要空手而归了---"<br></p>
-					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 真棒<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: positive tone, moderate speaking rate, and encouraging emotion.<br>播报内容: 那真是太棒啦，继续保持这种势头哦！<br></p>
-				</div>
-				</td>
-			</tr>
-			</tbody>
-		</table>
-		</div>
-</div>
-
-<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
-	<h2 id="App-agentic" style="text-align: center;">Interactive Broadcast</h2>
-	<p>By integrating SenseVoice, Multi-agent system with real-time world knowledge and CosyVoice, we can build an interactive broadcast.</p>
-	<div class="table-responsive pt-3">
-		<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
-			<thead>
-			<tr>
-				<th style="vertical-align : middle;text-align: center">Audio </th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
-			  <td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 480px;"><source src="audios/app/broadcaster.wav" autoplay/>Your browser does not support the audio element.</audio></td>
-			</tr>
-			</tbody>
-			<thead>
-			<tr>
-				<th style="vertical-align : middle;text-align: center">Chat Transcription </th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
-				<td style="vertical-align : middle;text-align: left; padding: 5px;">
-					<div style="background-color: #d9edf7;">
-					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_小夏</strong>： 聆听未来AI主播带你走在知识前沿。大家好，欢迎来到我们的播客节目，我是主播小夏。<br></p>
-					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_大东</strong>： Hello, 大家好，我是你们的搞笑担当大东。今天我们要聊的话题非常劲爆，那就是五月天演唱会假唱风波。<br></p>
-					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_小夏</strong>： 是啊，最近这个话题可是引发了不小的争议。首先我们来看看网友爆料的一些证据和分析。有网友上传了五月天演唱会上的一些视频片段，从这些视频中可以看出，主唱阿信在演唱时明显是在对口型，甚至有些地方的口型都不太对。<br></p>
-					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_大东</strong>： 哈哈，我看了那个视频确实有点尴尬，我还记得有个镜头是阿信把麦克风放下来。<br></p>
-				  </div>
-					<p style="background-color: #fbf2d1; margin: 5px;"><strong>User</strong>: 但这也太没有职业道德了吧，他。<br></p>
-					<p style="text-align: left; color: #000; background-color: #d9edf7; margin: 2px; padding-left: 400px;"><strong>Assistant_大东</strong>： 职业道德这个问题确实值得讨论。五月天一直以来都是以现场实力著称，乐队如果真有假唱，那粉丝们可能会感到失望，但也有时候考虑到音乐质量或者艺人身体状况，可能会采取一些措施，不过粉丝们通常更喜欢看到真实的现场表演，不是吗？你觉得呢？<br></p>
-					<p style="background-color: #fbf2d1; margin: 5px;"><strong>User</strong>: 没什么意思，换一个。<br></p>
-					<div style="background-color: #d9edf7; margin: 2px;">
-					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_大东</strong>： 接下来我们转入下一个话题，即将讨论的内容非常热门，那就是泰国队在36强赛对阵中国的海报，真是让人充满期待又感到紧张。<br></p>
-					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_小夏</strong>： 没错，我看到那海报的时候内心五味杂陈。我们国足上一次大比分失利于泰国队，那1至5的比分简直是噩梦。不过这次泰国队用这个当宣传，我觉得咱们国足的小伙子们可得打起精神来，不能再让历史重演了。<br></p>
-					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_大东</strong>： 对，这个海报上还贴出了2013年的热身赛和2019年中国杯赛事中泰国队战胜国足的情况，泰国队可真不客气。</p>
-				</div>
-				</td>
-			</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+---->
 
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">

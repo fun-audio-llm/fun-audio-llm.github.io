@@ -76,6 +76,7 @@
 				<li><a href="#CosyVoice-instructed">Instructed Voice Generation</a></li>
 				<li><a href="#CosyVoice-emotion">Emotionally Expressive Voice Generation</a></li>
 				<li><a href="#CosyVoice-sft">Speaker Fine-tune</a></li>
+				<li><a href="#CosyVoice-intep">Speaker Interpolation</a></li>
 				<li><a href="#Demos">Demo</a></li>
 			</ul>
 		</li>
@@ -656,6 +657,133 @@
 	<br>
 </div>
 
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h2 id="CosyVoice-intep" style="text-align: center;">Speaker Interpolation</h2>
+		<div class="table-responsive pt-3">
+			<table class="table table-hover pt-2">
+				<thead>
+				<tr>
+				<th style="text-align: center">Text </th>
+				<th style="text-align: center">speaker A </th>
+				<th>
+                    <input style="text-align: center" type="range" id="audioSlider1" min="0.1" max="0.9" step="0.1" value="0.5" oninput="updateGeneratedAudio(1)">
+                    <span id="sliderValue1">0.5</span>
+                </th>
+				<th style="text-align: center">speaker B </th>
+				</tr>
+				</thead>
+				
+				<tr>
+				<td style="vertical-align : middle;text-align:center;">晴空万里不如你心情愉悦，今天有什么开心的事吗？</td>
+				<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_0.0_1719544146.8989577_644e473c-692f-4af2-ac68-931a73c9323d.scp/1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				<td>
+					<audio id="generatedAudio1" controls="" style='width: 190px;'>
+						<!-- Placeholder for generated audio source -->
+						Your browser does not support the audio element.
+					</audio>
+				</td>
+				<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_1.0_1719544829.6705894_ab0b4859-13ca-4c5a-8058-6ea660079c32.scp/1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<thead>
+				<tr>
+					<th style="text-align: center">Text </th>
+					<th style="text-align: center">speaker A </th>
+					<th>
+						<input style="text-align: center" type="range" id="audioSlider2" min="0.1" max="0.9" step="0.1" value="0.5" oninput="updateGeneratedAudio(2)">
+						<span id="sliderValue2">0.5</span>
+					</th>
+					<th style="text-align: center">speaker B </th>
+				</tr>
+				</thead>
+
+				<tr>
+					<td style="vertical-align : middle;text-align:center;">早上好啊，今天也是元气满满的一天呢，一起加油吧</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_0.0_1719544146.8989577_644e473c-692f-4af2-ac68-931a73c9323d.scp/2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td>
+						<audio id="generatedAudio2" controls="" style='width: 190px;'>
+							<!-- Placeholder for generated audio source -->
+							Your browser does not support the audio element.
+						</audio>
+					</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_1.0_1719544829.6705894_ab0b4859-13ca-4c5a-8058-6ea660079c32.scp/2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<thead>
+				<tr>
+				<th style="text-align: center">Text </th>
+				<th style="text-align: center">speaker A </th>
+				<th>
+					<input style="text-align: center" type="range" id="audioSlider3" min="0.1" max="0.9" step="0.1" value="0.5" oninput="updateGeneratedAudio(3)">
+					<span id="sliderValue3">0.5</span>
+				</th>
+				<th style="text-align: center">speaker B </th>
+				</tr>
+				</thead>
+
+				<tr>
+					<td style="vertical-align : middle;text-align:center;">哎哟，为什么每次打游戏你都不认真的，我都快被怪物抓走了，你却在那里发呆，下一局你可要保护我啊</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_0.0_1719544146.8989577_644e473c-692f-4af2-ac68-931a73c9323d.scp/4.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td>
+						<audio id="generatedAudio3" controls="" style='width: 190px;'>
+							<!-- Placeholder for generated audio source -->
+							Your browser does not support the audio element.
+						</audio>
+					</td>
+					<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_1.0_1719544829.6705894_ab0b4859-13ca-4c5a-8058-6ea660079c32.scp/4.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+				
+				<thead>
+				<tr>
+					<th style="text-align: center">Text </th>
+					<th style="text-align: center">speaker A </th>
+					<th>
+						<input style="text-align: center" type="range" id="audioSlider4" min="0.1" max="0.9" step="0.1" value="0.5" oninput="updateGeneratedAudio(4)">
+						<span id="sliderValue4">0.5</span>
+					</th>
+					<th style="text-align: center">speaker B </th>
+				</tr>
+				</thead>
+
+				<tr>
+				<td style="vertical-align : middle;text-align:center;">哼，你明明答应我要一起去图书馆的，难道你忘记我们的约定了吗，真是的，下次你要记得守时哦</td>
+				<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_0.0_1719544146.8989577_644e473c-692f-4af2-ac68-931a73c9323d.scp/5.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				<td>
+					<audio id="generatedAudio4" controls="" style='width: 190px;'>
+						<!-- Placeholder for generated audio source -->
+						Your browser does not support the audio element.
+					</audio>
+				</td>
+				<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_1.0_1719544829.6705894_ab0b4859-13ca-4c5a-8058-6ea660079c32.scp/5.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+				<thead>
+				<tr>
+					<th style="text-align: center">Text </th>
+					<th style="text-align: center">speaker A </th>
+					<th>
+						<input style="text-align: center" type="range" id="audioSlider5" min="0.1" max="0.9" step="0.1" value="0.5" oninput="updateGeneratedAudio(5)">
+						<span id="sliderValue5">0.5</span>
+					</th>
+					<th style="text-align: center">speaker B </th>
+				</tr>
+				</thead>
+				<tr>
+				<td style="vertical-align : middle;text-align:center;">但是现在那个手抓饼，怎么感觉就是没有原来那个味儿了呢？</td>
+				<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_0.0_1719544146.8989577_644e473c-692f-4af2-ac68-931a73c9323d.scp/6.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				<td>
+					<audio id="generatedAudio5" controls="" style='width: 190px;'>
+						<!-- Placeholder for generated audio source -->
+						Your browser does not support the audio element.
+					</audio>
+				</td>
+				<td style="vertical-align : middle;text-align:center;"><audio controls="controls" style="width: 190px;"><source src="audios/intep/xvec_1.0_1719544829.6705894_ab0b4859-13ca-4c5a-8058-6ea660079c32.scp/6.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+				
+				</tbody>
+			</table>
+		</div>
+	<br>
+</div>
 
 <div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
 	<h2 id="SenseVoice-overview" style="text-align: center;">Overview of SenseVoice</h2>
@@ -1284,4 +1412,123 @@
 </div>
 
 </body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+
+<script>
+	function updateAudio(playerId, sliderValueId) {
+		var slider = document.getElementById(playerId.replace('audioPlayer', 'slider'));
+		var sliderValue = document.getElementById(sliderValueId);
+		var audioSource = document.getElementById(playerId.replace('audioPlayer', 'audioSource'));
+		var audioPlayer = document.getElementById(playerId);
+
+		var value = slider.value;
+		sliderValue.textContent = value;
+
+		var audioFileName = 'audio/' + value.toFixed(1) + '.mp3';
+
+		audioSource.src = audioFileName;
+
+		audioPlayer.load();
+	}
+</script>
+
+<script defer>
+    // Replace "path/to/generated1.wav", "path/to/generated2.wav", etc. with actual paths to generated audio files
+    const generatedAudioPaths = [
+        [
+        "audios/intep/xvec_0.1_1719544215.0340028_bc160adf-a7a8-492a-ba2c-ca900fd2a061.scp/1.wav",
+        "audios/intep/xvec_0.2_1719544284.4017332_2e6dfe9a-d6be-4c97-86c3-987d37ab3a4c.scp/1.wav",
+        "audios/intep/xvec_0.3_1719544351.812907_74abff87-8f3a-413f-9e07-e2744acd16e8.scp/1.wav",
+        "audios/intep/xvec_0.4_1719544421.4314406_ffd47c81-9b28-4446-a149-d49a83472eb4.scp/1.wav",
+        "audios/intep/xvec_0.5_1719544493.7661307_a85fe1de-02d5-4c57-9e07-72fdc6e75e19.scp/1.wav",
+        "audios/intep/xvec_0.6_1719544560.304527_a05be83a-83b8-45a3-98e1-0ee60b857e35.scp/1.wav",
+        "audios/intep/xvec_0.7_1719544626.7848334_cef032b4-7029-470b-84a1-24e3e3875388.scp/1.wav",
+        "audios/intep/xvec_0.8_1719544695.370552_89d90bec-f0ec-45f3-b913-12fb79d8b59b.scp/1.wav",
+        "audios/intep/xvec_0.9_1719544762.9455028_22c955a3-6405-4405-8c73-26ba0818b748.scp/1.wav",
+            // Add more paths for source 1
+        ],
+        [
+        "audios/intep/xvec_0.1_1719544215.0340028_bc160adf-a7a8-492a-ba2c-ca900fd2a061.scp/2.wav",
+        "audios/intep/xvec_0.2_1719544284.4017332_2e6dfe9a-d6be-4c97-86c3-987d37ab3a4c.scp/2.wav",
+        "audios/intep/xvec_0.3_1719544351.812907_74abff87-8f3a-413f-9e07-e2744acd16e8.scp/2.wav",
+        "audios/intep/xvec_0.4_1719544421.4314406_ffd47c81-9b28-4446-a149-d49a83472eb4.scp/2.wav",
+        "audios/intep/xvec_0.5_1719544493.7661307_a85fe1de-02d5-4c57-9e07-72fdc6e75e19.scp/2.wav",
+        "audios/intep/xvec_0.6_1719544560.304527_a05be83a-83b8-45a3-98e1-0ee60b857e35.scp/2.wav",
+        "audios/intep/xvec_0.7_1719544626.7848334_cef032b4-7029-470b-84a1-24e3e3875388.scp/2.wav",
+        "audios/intep/xvec_0.8_1719544695.370552_89d90bec-f0ec-45f3-b913-12fb79d8b59b.scp/2.wav",
+        "audios/intep/xvec_0.9_1719544762.9455028_22c955a3-6405-4405-8c73-26ba0818b748.scp/2.wav",
+            // Add more paths for source 2
+        ],
+        [
+        "audios/intep/xvec_0.1_1719544215.0340028_bc160adf-a7a8-492a-ba2c-ca900fd2a061.scp/4.wav",
+        "audios/intep/xvec_0.2_1719544284.4017332_2e6dfe9a-d6be-4c97-86c3-987d37ab3a4c.scp/4.wav",
+        "audios/intep/xvec_0.3_1719544351.812907_74abff87-8f3a-413f-9e07-e2744acd16e8.scp/4.wav",
+        "audios/intep/xvec_0.4_1719544421.4314406_ffd47c81-9b28-4446-a149-d49a83472eb4.scp/4.wav",
+        "audios/intep/xvec_0.5_1719544493.7661307_a85fe1de-02d5-4c57-9e07-72fdc6e75e19.scp/4.wav",
+        "audios/intep/xvec_0.7_1719544626.7848334_cef032b4-7029-470b-84a1-24e3e3875388.scp/4.wav",
+        "audios/intep/xvec_0.8_1719544695.370552_89d90bec-f0ec-45f3-b913-12fb79d8b59b.scp/4.wav",
+        "audios/intep/xvec_0.9_1719544762.9455028_22c955a3-6405-4405-8c73-26ba0818b748.scp/4.wav",
+            // Add more paths for source 3
+        ],
+        [
+        "audios/intep/xvec_0.1_1719544215.0340028_bc160adf-a7a8-492a-ba2c-ca900fd2a061.scp/5.wav",
+        "audios/intep/xvec_0.2_1719544284.4017332_2e6dfe9a-d6be-4c97-86c3-987d37ab3a4c.scp/5.wav",
+        "audios/intep/xvec_0.3_1719544351.812907_74abff87-8f3a-413f-9e07-e2744acd16e8.scp/5.wav",
+        "audios/intep/xvec_0.4_1719544421.4314406_ffd47c81-9b28-4446-a149-d49a83472eb4.scp/5.wav",
+        "audios/intep/xvec_0.5_1719544493.7661307_a85fe1de-02d5-4c57-9e07-72fdc6e75e19.scp/5.wav",
+        "audios/intep/xvec_0.7_1719544626.7848334_cef032b4-7029-470b-84a1-24e3e3875388.scp/5.wav",
+        "audios/intep/xvec_0.8_1719544695.370552_89d90bec-f0ec-45f3-b913-12fb79d8b59b.scp/5.wav",
+        "audios/intep/xvec_0.9_1719544762.9455028_22c955a3-6405-4405-8c73-26ba0818b748.scp/5.wav",
+            // Add more paths for source 4
+        ],
+        [
+        "audios/intep/xvec_0.1_1719544215.0340028_bc160adf-a7a8-492a-ba2c-ca900fd2a061.scp/6.wav",
+        "audios/intep/xvec_0.2_1719544284.4017332_2e6dfe9a-d6be-4c97-86c3-987d37ab3a4c.scp/6.wav",
+        "audios/intep/xvec_0.3_1719544351.812907_74abff87-8f3a-413f-9e07-e2744acd16e8.scp/6.wav",
+        "audios/intep/xvec_0.4_1719544421.4314406_ffd47c81-9b28-4446-a149-d49a83472eb4.scp/6.wav",
+        "audios/intep/xvec_0.5_1719544493.7661307_a85fe1de-02d5-4c57-9e07-72fdc6e75e19.scp/6.wav",
+        "audios/intep/xvec_0.7_1719544626.7848334_cef032b4-7029-470b-84a1-24e3e3875388.scp/6.wav",
+        "audios/intep/xvec_0.8_1719544695.370552_89d90bec-f0ec-45f3-b913-12fb79d8b59b.scp/6.wav",
+        "audios/intep/xvec_0.9_1719544762.9455028_22c955a3-6405-4405-8c73-26ba0818b748.scp/6.wav",
+            // Add more paths for source 5
+        ]
+    ];
+
+
+    // Trigger initial update on page load
+    updateGeneratedAudio(1);
+    updateGeneratedAudio(2);
+    updateGeneratedAudio(3);
+    updateGeneratedAudio(4);
+	updateGeneratedAudio(5);
+    
+    // Function to update generated audio source and slider value
+    function updateGeneratedAudio(groupIndex) {
+        const audioSlider = document.getElementById(`audioSlider${groupIndex}`);
+        const sliderValueSpan = document.getElementById(`sliderValue${groupIndex}`);
+        const generatedAudio = document.getElementById(`generatedAudio${groupIndex}`);
+        
+        const currentGroupPaths = generatedAudioPaths[groupIndex-1];
+
+        const sliderValue = parseFloat(audioSlider.value);
+        const selectedIndex = Math.floor(sliderValue * (currentGroupPaths.length-1));
+        console.log(sliderValue * currentGroupPaths.length)
+        console.log(selectedIndex)
+        const selectedPath = currentGroupPaths[selectedIndex];
+        
+        generatedAudio.src = selectedPath;
+        sliderValueSpan.textContent = `\u03B1=${sliderValue.toFixed(1)}`;
+        generatedAudio.load(); 
+    }
+</script>
 </html>

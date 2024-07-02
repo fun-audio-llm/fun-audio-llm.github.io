@@ -44,7 +44,7 @@
 <!--		We introduce FunAudioLLM, ....-->
 		This report introduces <b>FunAudioLLM</b>, a framework designed to enhance natural voice interactions between humans and large language models (LLMs). At its core are two innovative models: <b>SenseVoice</b> for high-precision multilingual speech recognition, emotion recognition, and audio event detection; and <b>CosyVoice</b> for natural speech generation with multi-language, timbre, and emotion control. SenseVoice delivers exceptionally low latency and supports over 50 languages, while CosyVoice excels in multi-lingual voice generation, zero-shot voice generation, cross-lingual voice cloning, and instruction-following capabilities. The models related to SenseVoice and CosyVoice have been open-sourced on Modelscope and Huggingface, along with the corresponding training, inference, and fine-tuning codes released on GitHub. By integrating these models with LLMs, FunAudioLLM enables applications such as speech translation, emotional voice chat, interactive podcasts, and expressive audiobook narration, thereby pushing the boundaries of voice interaction technology.
 	<p style="text-align: center;">
-		<img src="pics/highlight.png" height="400" width="1024">
+		<img src="pics/highlight.png" height="480" width="1280">
 	</p>
 <!--
 		<li> SenseVoice supports high-precision multilingual ASR, excels over Whisper in Chinese and Cantonese recognition, and has SOTA emotion recognition capabilities. </li>
@@ -163,7 +163,7 @@
 
 		<div class="table-responsive pt-3">
 			<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
-			<thead>
+			--<thead>
 			<tr>
 				<th style="vertical-align : middle;text-align: center">Audio </th>
 			</tr>
@@ -184,15 +184,15 @@
 			<tr>
 				<td style="vertical-align : middle;text-align: left; padding: 5px;">
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 早上好<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: warm tone, slow speaking rate, and friendly emotion.<br>播报内容: 早上好呀，今天的精神状态如何呀？<br></p>
+					<p style="background-color: #F2F2F2; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: warm tone, slow speaking rate, and friendly emotion.<br>播报内容: 早上好呀，今天的精神状态如何呀？<br></p>
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: <|HAPPY|>今天特别开心<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: high pitch, fast speaking rate, and happy emotion.<br>播报内容: [breath]哎哟，听到你这么开心[breath]我也很高兴呢，发生什么好事啦？<br></p>
+					<p style="background-color: #F2F2F2; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: high pitch, fast speaking rate, and happy emotion.<br>播报内容: [breath]哎哟，听到你这么开心[breath]我也很高兴呢，发生什么好事啦？<br></p>
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 我们要发布一个新的语音大模型啦<|Laughter|><br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: normal tone, medium speaking rate, with a hint of amusement.<br>播报内容: [laughter]太棒了，听说你们要发布新的语音大模型，真是个令人兴奋的消息啊！<br></p>
+					<p style="background-color: #F2F2F2; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: normal tone, medium speaking rate, with a hint of amusement.<br>播报内容: [laughter]太棒了，听说你们要发布新的语音大模型，真是个令人兴奋的消息啊！<br></p>
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 悲伤的说一句光头强台词吧<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: low pitch, slow speaking rate, and sad emotion.<br>播报内容: "唉---看来这次又要空手而归了---"<br></p>
+					<p style="background-color: #F2F2F2; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: low pitch, slow speaking rate, and sad emotion.<br>播报内容: "唉---看来这次又要空手而归了---"<br></p>
 					<p style="text-align: left; color: #000; background-color: #fbf2d1; padding-right: 300px;  margin: 2px;"><strong>User</strong>: 真棒<br></p>
-					<p style="background-color: #d9edf7; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: positive tone, moderate speaking rate, and encouraging emotion.<br>播报内容: 那真是太棒啦，继续保持这种势头哦！<br></p>
+					<p style="background-color: #F2F2F2; padding-left: 400px; margin: 5px;"><strong>Assistant</strong>: 生成风格: positive tone, moderate speaking rate, and encouraging emotion.<br>播报内容: 那真是太棒啦，继续保持这种势头哦！<br></p>
 				</div>
 				</td>
 			</tr>
@@ -209,7 +209,7 @@
 	</p>
 	<div class="table-responsive pt-3">
 		<table class="table table-hover pt-2" style="width: 100%; border-collapse: collapse;">
-			<thead>
+			--<thead>
 			<tr>
 				<th style="vertical-align : middle;text-align: center">Audio </th>
 			</tr>
@@ -227,16 +227,16 @@
 			<tbody>
 			<tr>
 				<td style="vertical-align : middle;text-align: left; padding: 5px;">
-					<div style="background-color: #d9edf7;">
+					<div style="background-color: #F2F2F2;">
 					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_小夏</strong>： 聆听未来AI主播带你走在知识前沿。大家好，欢迎来到我们的播客节目，我是主播小夏。<br></p>
 					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_大东</strong>： Hello, 大家好，我是你们的搞笑担当大东。今天我们要聊的话题非常劲爆，那就是五月天演唱会假唱风波。<br></p>
 					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_小夏</strong>： 是啊，最近这个话题可是引发了不小的争议。首先我们来看看网友爆料的一些证据和分析。有网友上传了五月天演唱会上的一些视频片段，从这些视频中可以看出，主唱阿信在演唱时明显是在对口型，甚至有些地方的口型都不太对。<br></p>
 					  <p style="text-align: left; color: #000; padding-left: 400px;  margin: 2px;"><strong>Assistant_大东</strong>： 哈哈，我看了那个视频确实有点尴尬，我还记得有个镜头是阿信把麦克风放下来。<br></p>
 				  </div>
 					<p style="background-color: #fbf2d1; margin: 5px;"><strong>User</strong>: 但这也太没有职业道德了吧，他。<br></p>
-					<p style="text-align: left; color: #000; background-color: #d9edf7; margin: 2px; padding-left: 400px;"><strong>Assistant_大东</strong>： 职业道德这个问题确实值得讨论。五月天一直以来都是以现场实力著称，乐队如果真有假唱，那粉丝们可能会感到失望，但也有时候考虑到音乐质量或者艺人身体状况，可能会采取一些措施，不过粉丝们通常更喜欢看到真实的现场表演，不是吗？你觉得呢？<br></p>
+					<p style="text-align: left; color: #000; background-color: #F2F2F2; margin: 2px; padding-left: 400px;"><strong>Assistant_大东</strong>： 职业道德这个问题确实值得讨论。五月天一直以来都是以现场实力著称，乐队如果真有假唱，那粉丝们可能会感到失望，但也有时候考虑到音乐质量或者艺人身体状况，可能会采取一些措施，不过粉丝们通常更喜欢看到真实的现场表演，不是吗？你觉得呢？<br></p>
 					<p style="background-color: #fbf2d1; margin: 5px;"><strong>User</strong>: 没什么意思，换一个。<br></p>
-					<div style="background-color: #d9edf7; margin: 2px;">
+					<div style="background-color: #F2F2F2; margin: 2px;">
 					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_大东</strong>： 接下来我们转入下一个话题，即将讨论的内容非常热门，那就是泰国队在36强赛对阵中国的海报，真是让人充满期待又感到紧张。<br></p>
 					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_小夏</strong>： 没错，我看到那海报的时候内心五味杂陈。我们国足上一次大比分失利于泰国队，那1至5的比分简直是噩梦。不过这次泰国队用这个当宣传，我觉得咱们国足的小伙子们可得打起精神来，不能再让历史重演了。<br></p>
 					<p style="text-align: left; color: #000; padding-left: 400px; margin: 2px;"><strong>Assistant_大东</strong>： 对，这个海报上还贴出了2013年的热身赛和2019年中国杯赛事中泰国队战胜国足的情况，泰国队可真不客气。</p>

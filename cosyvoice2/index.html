@@ -45,7 +45,7 @@
 <!--		We introduce FunAudioLLM, ....-->
 		In our previous work, we proposed <b>CosyVoice</b>, a multilingual speech synthesis model based on supervised discrete speech token. By performing progressive semantic decoding with two popular generative models: language models (LMs) and Flow Matching, CosyVoice achieved high prosody naturalness, content consistency, and speaker similarity in speech in-context learning. Recently, there have been significant advancements in multi-modal large language models (LLMs), in which the response latency and real-time factor of speech synthesis play a crucial role in the interactive experience. Therefore, in this work, we introduce an improved streaming speech synthesis model, <b>CosyVoice 2</b>, with comprehensive and systematic optimizations. Firstly, we introduce finite-scalar quantization to improve the codebook utilization of speech tokens.  Secondly, we simplify the model architecture of the text-speech LM, so as the pre-trained LLMs can be directly used as the backbone. Additionally, we also design a chunk-aware causal flow matching model to accommodate different synthesis scenarios. As a result, we can perform the streaming and non-streaming synthesis within a single model. By training on a large-scale multilingual dataset, CosyVoice 2 achieves human-comparable synthesis quality with very low response latency and real-time factor.
 	<p style="text-align: center;">
-		<img src="pics/CosyVoice2-overview.pdf" height="400" width="1024">
+		<img src="pics/CosyVoice2-overview.png" height="400" width="1024">
 	</p>
 </p>
 	</p>
